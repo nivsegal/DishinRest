@@ -1,0 +1,19 @@
+<div id="loginContainer">
+	<% if (req.user) { %>
+		<a href="/logout">Logout</a>
+	<% } else { %>
+		<a href="/login">Login</a> | <a href="/signup">Signup</a>
+		<a class="btn btn-block btn-social btn-facebook" href="/facebookSignup">
+			<span class="fa fa-facebook"></span> Sign in with Facebook
+		</a>
+		<a class="btn btn-block btn-social btn-google" href="/googleSignup">
+			<span class="fa fa-google"></span> Sign in with Google
+		</a>
+		<a class="btn btn-block btn-social btn-instagram" href="/instagramSignup">
+			<span class="fa fa-instagram"></span> Sign in with Instagram
+		</a>
+		<a class="btn btn-block btn-social btn-twitter" href="/twitterSignup">
+			<span class="fa fa-twitter"></span> Sign in with Twitter
+		</a>
+	<% } %>
+</div>

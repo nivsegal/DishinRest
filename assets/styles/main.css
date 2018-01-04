@@ -1,0 +1,322 @@
+html {
+	overflow: scroll;
+	overflow-x: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+}
+::-webkit-scrollbar {
+	width: 0px;  /* remove scrollbar space */
+	background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+	background: #FF0000;
+}
+
+.btn-outline-primary { cursor: pointer; }
+
+.example-appear {
+	opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+	opacity: 1;
+	transition: opacity .5s ease-in;
+}
+
+.glyphicon {
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-floppy-save            {  content: "\e175";  }
+
+#content {
+	width: 100%;
+	background: url(../images/backgroundRest.png) no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding: 60px 0;
+	text-align: center;
+}
+
+.red {
+	color: red;
+	height: 20px;
+}
+
+h3 {
+	color:#353d49;
+	padding: 40px;
+}
+
+#restForm {
+	padding-top:70px;
+}
+
+#restForm > div *{
+	vertical-align: middle;
+}
+
+#restForm > div > label { 
+	vertical-align: middle;
+}
+
+#restForm > div span {
+	width: 316px;
+	display: inline-block;
+	text-align: left;
+	font-size: 20pt;
+}
+
+#restForm input, #restForm textarea{
+	display: inline-block;
+}
+
+#restForm textarea {
+	width:43%;
+	resize: none;
+}
+
+.form-control {
+	line-height: 1.5;
+}
+
+#restForm input:not([type]), input[type="text"], #restForm textarea
+{
+}
+
+li {
+	list-style-type: none;
+}
+
+#restForm > div span.hours {
+	display: inline-block;
+	height: 36px;
+	width: 25%;
+}
+
+#restForm > div span.day {
+	width:34%;
+	font-size: 16pt;
+}
+
+#restForm > div span.inline {
+	display:inline;
+	font-size: 16pt;
+}
+
+#restForm input.rc-time-picker-input{
+	width:80%;
+	background-color: rgba(220, 220, 220, 0.42);
+	border-radius: 20px;
+	border: transparent;
+	height:36px;
+}
+
+#restForm > div ul{
+	vertical-align: text-top;
+	padding:0;
+}
+
+#restForm input[type='checkbox'] {
+	margin-right: 5px;
+	margin-top: -5px;
+}
+
+button {
+	cursor: pointer;
+	margin-left: 8%;
+}
+
+.autocompleteRoot {
+	display: inline-block;
+	width:43%;
+	position: relative;
+	z-index: 100;
+}
+
+.form-group {
+	text-align: left;
+	margin-bottom: 2rem;
+}
+
+.form-group.name .autocompleteRoot {
+	z-index:101;
+}
+
+#navigationPane {
+	width:22%;
+	direction: rtl;
+	float:right;
+}
+
+#navigationPane > a{
+	display: block;
+}
+
+#createRest{
+	clear: both;
+	float: right;
+}
+
+.buttons {
+	padding: 20px 0;
+}
+
+.buttons > button {
+	margin-top:10px;
+}
+
+#content > h1 {
+	color: #fff;
+	padding-top: 55px;
+	font-size: 38px;
+}
+
+#content > h3 {
+	font-size:28px;
+	color: #fff;
+	padding:100px 0 30px;
+}
+
+#triangle {
+	width: 0px;
+	height: 0px;
+	border-left: 18px solid transparent;
+	border-right: 18px solid transparent;
+	border-top: 18px solid #fff;
+}
+
+#container {
+	position: relative;
+}
+
+#formContainer {
+	width: 60%;
+	margin:0 auto;
+	padding:40px 0;
+}
+
+#formContainer > span {
+	text-align: center;
+}
+
+#formContainer h4 {
+	text-align: center;
+	font-size: 28pt;
+	color: #000;
+}
+
+.form-control {
+	background-color: rgba(220, 220, 220, 0.42);
+	border-radius: 20px;
+	border: transparent;
+}
+
+.form-control:focus {
+	background-color: rgba(220, 220, 220, 0.42);
+}
+
+#restForm button {
+	background-color:#ed3a3a;
+	border: transparent;
+	border-radius: 20px;
+	color: #fff;
+	width: 260px;
+	height: 50px;
+	font-size:18px;
+}
+
+#rightStripTop {
+	position: absolute;
+	right:0;
+	width: 317px;
+	height: 451px;
+	background: url('../images/rightStripTop.png') 0 0 no-repeat;
+}
+
+#leftStrip {
+	position: absolute;
+	left:0;
+	top:135px;
+	width:142px;
+	height:1088px;
+	background: url('../images/leftStrip.png') 0 0 no-repeat;
+}
+
+#bottomRightScript {
+	background: url('../images/bottomRightStrip.png') 0 0 no-repeat;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 308px;
+	height: 560px;
+
+}
+
+.hoursPopup, .hoursPopup > div {
+	width: 35%;
+}
+
+li.tag {
+	font-size: 16pt;
+}
+
+.styledCheckbox{
+	width: 25px;
+	line-height: 16pt;
+	position: relative;
+}
+
+.styledCheckbox label {
+	cursor: pointer;
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	top: 0;
+	left: 0;
+	text-indent: 35px; 
+	background: #eee;
+	border:1px solid #ddd;
+}
+
+.styledCheckbox label:after {
+	opacity: 0.2;
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 5px;
+	background: transparent;
+	top: 6px;
+	left: 7px;
+	border: 3px solid #333;
+	border-top: none;
+	border-right: none;
+
+	transform: rotate(-45deg);
+}
+
+.styledCheckbox label:hover::after {
+	opacity: 0.5;
+}
+
+/**
+ * Create the checkbox state for the tick
+ */
+.styledCheckbox input[type=checkbox]:checked + label:after {
+	opacity: 1;
+}
+
+#loginContainer {
+	width: 350px;
+	padding: 10px 20px;
+}
