@@ -57,26 +57,26 @@ const verifyHandler = (token, tokenSecret, profile, done) => {
 passport.use(new FacebookStrategy({
 	clientID: "1165866970222123", // Use your Facebook App Id
 	clientSecret: "b5a47642cd15662884cd089a81973f97", // Use your Facebook App Secret
-	callbackURL: "http://localhost/auth/facebook/callback",
+	callbackURL: "/auth/facebook/callback",
 	profileFields: ['id', 'emails', 'name'] //This	
 }, verifyHandler));
 
 passport.use(new GoogleStrategy({
 	clientID: '632648325896-gktvp61gvqmut0sgnrbl89rfd1mbjapq.apps.googleusercontent.com',
 	clientSecret: 'rIkQRhMGQ-cvUW5UlDcLCvt2',
-	callbackURL: 'http://localhost/auth/google/callback'
+	callbackURL: '/auth/google/callback'
 }, verifyHandler));
 
 passport.use(new InstagramStrategy({
 	clientID: '066c10e2d2d248b5a48c84e4ad3e2262',
 	clientSecret: '08e3b247f21e437d9cd1c1fe899f976e',
-	callbackURL: "http://localhost/auth/instagram/callback"
+	callbackURL: "/auth/instagram/callback"
 }, verifyHandler));
 
 passport.use(new TwitterStrategy({
 	consumerKey: 'USPoNa2aAGiiHPXh8VM54Sdbx',
 	consumerSecret: 'EYrhdm8W1g2GhF2Qu9V8qSNun48fA36NeBn4ntrTKIoOTbFHMr',
-	callbackURL: "http://localhost/auth/twitter/callback"
+	callbackURL: "/auth/twitter/callback"
 },verifyHandler));
 
 passport.use(new LocalStrategy({
