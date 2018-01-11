@@ -26,7 +26,7 @@ const verifyHandler = (token, tokenSecret, profile, done) => {
 
 				console.log(profile)
 				//fallback for instagram...
-				if (typeof profile.last_name === 'undefined') {
+				if (profile.provider === 'instagram') {
 					const nameArr = profile.displayName.split(' ');
 					profile.first_name = nameArr[0];
 					profile.last_name = nameArr[1];
