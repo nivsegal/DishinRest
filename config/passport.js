@@ -23,6 +23,8 @@ const verifyHandler = (token, tokenSecret, profile, done) => {
 			if (user) {
 				return done(null, user);
 			} else {
+
+				console.log(profile)
 				//fallback for instagram...
 				if (typeof profile.last_name === 'undefined') {
 					const nameArr = profile.displayName.split(' ');
@@ -30,8 +32,6 @@ const verifyHandler = (token, tokenSecret, profile, done) => {
 					profile.last_name = nameArr[1];
 					profile.emails = new Array(1).fill({ value: profile.username + '@' + 'gmail.com' });
 				}
-
-				console.log(profile)
 
 				var data = {
 					provider: profile.provider,
