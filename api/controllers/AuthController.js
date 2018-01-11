@@ -15,22 +15,10 @@ module.exports = {
 		rest: false
 	},
 
-	processLogin: (...args) => {
-		req.logIn(user, err => {
-			if (err) {
-				console.log(err);
-				res.view('500');
-				return;
-			}
-			console.log(user);
-			res.view('/user/restaurant');
-			return;
-		});
-	},
-
-	login: (req, res) => {
+	login: (req, res, next) => {
+		const args = [req, res, next];
 		passport.authenticate('local', (err, user, info) => {
-			AuthController.processLogin(user, err, ...args);
+			sails.controllers.auth.processLogin(user, err, ...args);
 		})(req, res);
 	},
 
@@ -39,7 +27,7 @@ module.exports = {
 	// https://developers.facebook.com/docs/reference/login/
 	facebook: (req, res, next) => {
 		const args = [req, res, next];
-		passport.authenticate('facebook', { failureRedirect: '/', scope: ['email'] }, (err, user) => {
+		passport.authenticate('facebook', { failureRedirect: '/', scope: ['email'], callbackURL: '/auth/facebook/callback' }, (err, user) => {
 			AuthController.processLogin(user, err, ...args);
 		})(req, res, next);
 	},
@@ -91,6 +79,21 @@ module.exports = {
 	logout: (req, res) => {
 		req.logout();
 		res.redirect('/');
-	}
+	},
+
+	processLogin: (req, ...args) => {
+		console.log(args);
+		req.logIn(user, err => {
+			if (err) {
+				console.log(err);
+				res.view('500');
+				return;
+			}
+			console.log(user);
+			res.view('/user/restaurant');
+			return;
+		});
+	},
+
 };
 
