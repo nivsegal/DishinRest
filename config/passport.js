@@ -4,7 +4,7 @@ const passport = require('passport'),
 	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
 	InstagramStrategy = require('passport-instagram').Strategy,
 	TwitterStrategy = require('passport-twitter').Strategy
-	bcrypt = require('bcrypt');
+bcrypt = require('bcrypt');
 
 passport.serializeUser((user, done) => {
 	done(null, user.id);
@@ -77,33 +77,34 @@ passport.use(new TwitterStrategy({
 	consumerKey: 'USPoNa2aAGiiHPXh8VM54Sdbx',
 	consumerSecret: 'EYrhdm8W1g2GhF2Qu9V8qSNun48fA36NeBn4ntrTKIoOTbFHMr',
 	callbackURL: "/auth/twitter/callback"
-},verifyHandler));
+}, verifyHandler));
 
 passport.use(new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password'
 }, (email, password, done) => {
+	process.nextTick(() => {
+		User.findOne({ email: email, provider: 'local' }, (err, user) => {
+			if (err) { return done(err); }
+			if (!user) {
+				return done(null, false, { message: 'Incorrect email.' });
+			}
 
-	User.findOne({ email: email }, (err, user) => {
-		if (err) { return done(err); }
-		if (!user) {
-			return done(null, false, { message: 'Incorrect email.' });
-		}
-
-		bcrypt.compare(password, user.password, (err, res) => {
-			if (!res)
-				return done(null, false, {
-					message: 'Invalid Password'
+			bcrypt.compare(password, user.password, (err, res) => {
+				if (!res)
+					return done(null, false, {
+						message: 'Invalid Password'
+					});
+				var returnUser = {
+					email: user.email,
+					createdAt: user.createdAt,
+					id: user.id
+				};
+				return done(null, returnUser, {
+					message: 'Logged In Successfully'
 				});
-			var returnUser = {
-				email: user.email,
-				createdAt: user.createdAt,
-				id: user.id
-			};
-			return done(null, returnUser, {
-				message: 'Logged In Successfully'
 			});
 		});
-	});
+	})
 }
 ));

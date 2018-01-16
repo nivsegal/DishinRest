@@ -32,7 +32,7 @@ module.exports = {
 	signup: (req, res) => {
 		const params = req.params.all();
 		User.create(params).then(user => {
-			req.login(user => {
+			req.logIn(user => {
 				return res.redirect('/welcome');
 			});
 		}).catch(err => {

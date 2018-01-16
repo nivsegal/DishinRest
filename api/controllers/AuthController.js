@@ -7,19 +7,12 @@
 
 var passport = require('passport');
 
-module.exports = {
+var AuthController = {
 
 	_config: {
 		actions: false,
 		shortcuts: false,
 		rest: false
-	},
-
-	login: (req, res, next) => {
-		const args = [req, res, next];
-		passport.authenticate('local', (err, user, info) => {
-			sails.controllers.auth.processLogin(user, err, ...args);
-		})(req, res);
 	},
 
 	// Here is where we specify our facebook strategy.
@@ -81,8 +74,10 @@ module.exports = {
 		res.redirect('/');
 	},
 
-	processLogin: (req, ...args) => {
-		console.log(args);
+	processLogin: (user, err, ...args) => {
+		// console.log(args);
+		const req = args[0];
+		const res = args[1];
 		req.logIn(user, err => {
 			if (err) {
 				console.log(err);
@@ -90,10 +85,19 @@ module.exports = {
 				return;
 			}
 			console.log(user);
-			res.view('/user/restaurant');
+			res.redirect('/');
 			return;
 		});
 	},
 
+
+	login: (req, res, next) => {
+		passport.authenticate('local', (err, user) => {
+			AuthController.processLogin(user, err, req, res);
+		})(req, res, next);
+	},
+
+
 };
+module.exports = AuthController;
 
