@@ -1,19 +1,26 @@
-<div id="loginContainer">
-	<% if (req.user) { %>
-		<a href="/logout">Logout</a>
-	<% } else { %>
-		<a href="/login">Login</a> | <a href="/signup">Signup</a>
-		<a class="btn btn-block btn-social btn-facebook" href="/facebookSignup">
-			<span class="fa fa-facebook"></span> Sign in with Facebook
-		</a>
-		<a class="btn btn-block btn-social btn-google" href="/googleSignup">
-			<span class="fa fa-google"></span> Sign in with Google
-		</a>
-		<a class="btn btn-block btn-social btn-instagram" href="/instagramSignup">
-			<span class="fa fa-instagram"></span> Sign in with Instagram
-		</a>
-		<a class="btn btn-block btn-social btn-twitter" href="/twitterSignup">
-			<span class="fa fa-twitter"></span> Sign in with Twitter
-		</a>
-	<% } %>
+<div id="content">
+	<div id="dishinLeftStrip">
+		<span id="dishinLogo"></span>
+	</div>
+	<div id="fullLogo"></div>
+	<div id="loginContainer">
+		<h3 class="homeHeader">LOGIN WITH</h3>
+		<div id="socialContainer">
+			<a id="facebook" href="/facebookSignup">
+				<img src="/images/facebook.png" />
+			</a>
+			<a id="instagram" href="/instagramSignup">
+				<img src="/images/instush.png" />
+			</a>
+			<a id="google" href="/googleSignup">
+				<img src="/images/google.png" />
+			</a>
+		</div>
+		<p>or</p>
+		<form id="signupForm" action="/signup" method="post">
+			<input class="txtInput" value="" name="email" placeholder="Email" />
+			<input class="txtInput" type="password" value="" name="password" placeholder="Password" />
+			<input type="submit" value="Create an Account" class="button" />
+		</form>
+	</div>
 </div>
