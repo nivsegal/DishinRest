@@ -349,7 +349,7 @@ li.tag {
 }
 
 #dishinLeftStrip {
-	width:67px;
+	width:62px;
 	background-color: rgba(86, 86, 86, 0.5);
 	height: 100%;
 	position: fixed;
@@ -358,14 +358,18 @@ li.tag {
 	z-index: 1;
 }
 
+#dishinLeftStrip.navigationPane {
+	background-color: rgba(86, 86, 86, 1);
+}
+
 #dishinLogo {
 	position: absolute;
 	top:0;
 	left:0;
 	z-index: 2;
 	background-color: #ed3b3a;
-	width: 67px;
-	height: 67px;
+	width: 62px;
+	height: 62px;
 	opacity: 1;
 }
 
@@ -442,5 +446,46 @@ input.button {
 
 input.button:hover {
 	opacity: 0.6;
+}
+
+#appNavigation {
+	margin-top: 100px;
+	text-align: center;
+	width: 100%;
+}
+
+#appNavigation > .icon {
+	display: block;
+	margin: 0 auto;
+	width: 21px;
+	height:20px;
+	cursor: pointer;
+}
+
+#appNavigation > .icon.dashboard {
+	background: url(../images/dahboard_icon.png) 0 0 no-repeat;
+}
+
+#appNavigation > .icon.menus {
+	background: url(../images/menus_logo.png) 0 0 no-repeat;
+}
+
+#appNavigation > .icon.dishes {
+	background: url(../images/dishes.png) 0 0 no-repeat;
+}
+
+#appNavigation > .navTitle {
+	color:#fff;
+	font-family: Lato-Regular, sans-serif;
+	font-size: 10px;
+	font-weight: 100;
+	margin-top: 5px;
+	padding-bottom: 25px;
+	display: block;
+	cursor: pointer;
+}
+
+#appNavigation > .icon.dishes + span {
+	margin-top: -3px;
 }
 

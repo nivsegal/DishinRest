@@ -7,6 +7,7 @@ import RestaurantForm from './restaurantForm.jsx';
 import CategoryForm from './categoryForm.jsx';
 import DishForm from './dishForm.jsx';
 import MenuForm from './menuForm.jsx';
+import AppNavigation from './appNavigation.jsx';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 @observer class RestaurantView extends React.Component {
@@ -28,6 +29,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 	@observable menu = null;
 	@observable category = null;
 	@observable dish = null;
+	@observable activeTab = null;
 
 	_handleRestChoose = (option, del, menu) => {
 		if (menu === true) {
@@ -137,6 +139,9 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 			transitionAppear={true}
 			transitionAppearTimeout={3500}>
 			<div id="container">
+				<AppNavigation active={this.activeTab} />
+				<a href="/logout">Logout</a>
+				<a href="/backoffice">BackOffice</a>
 				<NavigationPane category={this.category} data={this.data} callBackRestChoose={this._handleRestChoose} callBackCategoryChoose={this._editCategory} callBackAddCategory={this._handleAddCategory}
 					restaurantIds={this.restaurantIds} callBackMenuClick={this._editMenu} callBackMenuDelete={this._handleDeleteMenu} callBackCategoryDelete={this._handleDeleteCategory}
 					callBackDishChoose={this._editDish} />
