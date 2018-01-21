@@ -364,13 +364,12 @@ li.tag {
 
 #dishinLogo {
 	position: absolute;
-	top:0;
-	left:0;
+	top: 0;
+	left: 0;
 	z-index: 2;
-	background-color: #ed3b3a;
+	background: url(../images/closh.png) 12px 20px no-repeat, #ed3b3a;
 	width: 62px;
 	height: 62px;
-	opacity: 1;
 }
 
 #fullLogo{
@@ -410,6 +409,10 @@ h3.homeHeader {
 	margin: 0 15px;
 }
 
+#google {
+	margin-right: 15px;
+}
+
 #loginContainer > p {
 	color: #282828;
 	font-size: 18px;
@@ -442,6 +445,7 @@ input.button {
 	border: transparent;
 	border-radius: 30px;
 	margin-bottom: 55px; 
+	box-shadow: 2px 2px 4px #888888;
 }
 
 input.button:hover {
