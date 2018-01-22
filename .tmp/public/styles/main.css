@@ -474,6 +474,11 @@ input.button:hover {
 	background: url(../images/menus_logo.png) 0 0 no-repeat;
 }
 
+#appNavigation .icon.categories {
+	background: url(../images/categories.png) 0 0 no-repeat;
+	height: 18px;
+}
+
 #appNavigation .icon.dishes {
 	background: url(../images/dishes.png) 0 0 no-repeat;
 }
@@ -486,12 +491,18 @@ input.button:hover {
 	background: url(../images/menus_red.png) 0 0 no-repeat;
 }
 
+#appNavigation > div:hover .icon.categories, #appNavigation > div.active .icon.categories{
+	background: url(../images/categories_red.png) 0 0 no-repeat;
+	height: 18px;
+}
+
 #appNavigation > div:hover .icon.dishes, #appNavigation > div.active .icon.dishes {
 	background: url(../images/dishes_red.png) 0 0 no-repeat;
 }
 
 
 #appNavigation > div {
+	position: relative;
 	cursor: pointer;
 }
 
@@ -506,11 +517,25 @@ input.button:hover {
 	cursor: pointer;
 }
 
-#appNavigation > div:hover .navTitle, #appNavigation > div.active .navTitle {
+/* #appNavigation > div:hover .navTitle, #appNavigation > div.active .navTitle {
 	color:#ed3b3a;
-}
+} */
 
 #appNavigation .icon.dishes + span {
 	margin-top: -3px;
 }
 
+.indicator {
+	visibility: hidden;
+	width: 5px;
+	height: 38px;
+	background: url(../images/indicator.png) 0 0 no-repeat;
+	display: block;
+	position: absolute;
+	right: -2px;
+	top: -6px;
+}
+
+#appNavigation > div.active .indicator {
+	visibility: visible;
+}

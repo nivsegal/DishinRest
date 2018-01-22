@@ -19,14 +19,22 @@ import { observer } from "mobx-react";
 				<div id="dashboard" className={active === 'dashboard' ? 'active' : ''} onClick={this._setActive}>
 					<span className="icon dashboard"></span>
 					<span className="navTitle">Dashboard</span>
+					<span className="indicator"></span>
 				</div>
 				<div id="menus" className={active === 'menus' ? 'active' : ''} onClick={this._setActive}>
 					<span className="icon menus"></span>
 					<span className="navTitle">Menus</span>
+					<span className="indicator"></span>
+				</div>
+				<div id="categories" className={active === 'categories' ? 'active' : ''} onClick={this._setActive}>
+					<span className="icon categories"></span>
+					<span className="navTitle">Categories</span>
+					<span className="indicator"></span>
 				</div>
 				<div id="dishes" className={active === 'dishes' ? 'active' : ''} onClick={this._setActive}>
 					<span className="icon dishes"></span>
 					<span className="navTitle">Dishes</span>
+					<span className="indicator"></span>
 				</div>
 			</div>
 		</div>
