@@ -8,12 +8,18 @@ import { observer } from "mobx-react";
 		return <div id="dishinLeftStrip" className="navigationPane">
 			<span id="dishinLogo"></span>
 			<div id="appNavigation">
-				<span className="icon dashboard"></span>
-				<span className="navTitle">Dashboard</span>
-				<span className="icon menus"></span>
-				<span className="navTitle">Menus</span>
-				<span className="icon dishes"></span>
-				<span className="navTitle">Dishes</span>
+				<div>
+					<span className="icon dashboard"></span>
+					<span className="navTitle">Dashboard</span>
+				</div>
+				<div>
+					<span className="icon menus"></span>
+					<span className="navTitle">Menus</span>
+				</div>
+				<div>
+					<span className="icon dishes"></span>
+					<span className="navTitle">Dishes</span>
+				</div>
 			</div>
 		</div>
 	}

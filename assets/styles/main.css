@@ -458,7 +458,7 @@ input.button:hover {
 	width: 100%;
 }
 
-#appNavigation > .icon {
+#appNavigation .icon {
 	display: block;
 	margin: 0 auto;
 	width: 21px;
@@ -466,19 +466,31 @@ input.button:hover {
 	cursor: pointer;
 }
 
-#appNavigation > .icon.dashboard {
+#appNavigation .icon.dashboard {
 	background: url(../images/dahboard_icon.png) 0 0 no-repeat;
 }
 
-#appNavigation > .icon.menus {
+#appNavigation .icon.menus {
 	background: url(../images/menus_logo.png) 0 0 no-repeat;
 }
 
-#appNavigation > .icon.dishes {
+#appNavigation .icon.dishes {
 	background: url(../images/dishes.png) 0 0 no-repeat;
 }
 
-#appNavigation > .navTitle {
+#appNavigation > div:hover .icon.dashboard {
+	background: url(../images/dashboard_red.png) 0 0 no-repeat;
+}
+
+#appNavigation > div:hover .icon.menus {
+	background: url(../images/menus_red.png) 0 0 no-repeat;
+}
+
+#appNavigation > div:hover .icon.dishes {
+	background: url(../images/dishes_red.png) 0 0 no-repeat;
+}
+
+#appNavigation .navTitle {
 	color:#fff;
 	font-family: Lato-Regular, sans-serif;
 	font-size: 10px;
@@ -489,7 +501,11 @@ input.button:hover {
 	cursor: pointer;
 }
 
-#appNavigation > .icon.dishes + span {
+#appNavigation > div:hover .navTitle {
+	color:#ed3b3a;
+}
+
+#appNavigation .icon.dishes + span {
 	margin-top: -3px;
 }
 
