@@ -478,16 +478,21 @@ input.button:hover {
 	background: url(../images/dishes.png) 0 0 no-repeat;
 }
 
-#appNavigation > div:hover .icon.dashboard {
+#appNavigation > div:hover .icon.dashboard, #appNavigation > div.active .icon.dashboard{
 	background: url(../images/dashboard_red.png) 0 0 no-repeat;
 }
 
-#appNavigation > div:hover .icon.menus {
+#appNavigation > div:hover .icon.menus, #appNavigation > div.active .icon.menus{
 	background: url(../images/menus_red.png) 0 0 no-repeat;
 }
 
-#appNavigation > div:hover .icon.dishes {
+#appNavigation > div:hover .icon.dishes, #appNavigation > div.active .icon.dishes {
 	background: url(../images/dishes_red.png) 0 0 no-repeat;
+}
+
+
+#appNavigation > div {
+	cursor: pointer;
 }
 
 #appNavigation .navTitle {
@@ -501,7 +506,7 @@ input.button:hover {
 	cursor: pointer;
 }
 
-#appNavigation > div:hover .navTitle {
+#appNavigation > div:hover .navTitle, #appNavigation > div.active .navTitle {
 	color:#ed3b3a;
 }
 

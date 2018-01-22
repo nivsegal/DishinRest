@@ -29,7 +29,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 	@observable menu = null;
 	@observable category = null;
 	@observable dish = null;
-	@observable activeTab = null;
+	@observable activeTab = 'dashboard';
 
 	_handleRestChoose = (option, del, menu) => {
 		if (menu === true) {
@@ -127,6 +127,10 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 		this.showMenuForm = false;
 	}
 
+	_setActiveTab = name => {
+		this.activeTab = name;
+	}
+
 	render() {
 		const restForm = this.showForm === true ? <RestaurantForm restaurant={this.restaurant} submitCallback={this._handleSubmit} /> : null;
 		const menuForm = this.showMenuForm === true ? <MenuForm menuId={this.menuId} restaurant={this.restaurant} submitCallback={this._handleMenuSubmit} /> : null;
@@ -139,7 +143,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 			transitionAppear={true}
 			transitionAppearTimeout={3500}>
 			<div id="container">
-				<AppNavigation active={this.activeTab} />
+				<AppNavigation active={this.activeTab} setActive={this._setActiveTab} />
 				<a href="/logout">Logout</a>
 				<a href="/backoffice">BackOffice</a>
 				<NavigationPane category={this.category} data={this.data} callBackRestChoose={this._handleRestChoose} callBackCategoryChoose={this._editCategory} callBackAddCategory={this._handleAddCategory}
