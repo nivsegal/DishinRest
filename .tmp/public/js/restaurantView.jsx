@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 import NavigationPane from "./navigationPane.jsx";
 import RestaurantForm from './restaurantForm.jsx';
 import CategoryForm from './categoryForm.jsx';
+import RestaurantPopup from './restaurantPopup.jsx';
 import DishForm from './dishForm.jsx';
 import MenuForm from './menuForm.jsx';
 import AppNavigation from './appNavigation.jsx';
@@ -136,6 +137,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 		const menuForm = this.showMenuForm === true ? <MenuForm menuId={this.menuId} restaurant={this.restaurant} submitCallback={this._handleMenuSubmit} /> : null;
 		const categoryForm = this.showCategoryForm === true ? <CategoryForm menuId={this.menuId} categoryId={this.categoryId} category={this.category} submitCallback={this._handleCategorySubmit} /> : null;
 		const dishForm = this.showdishForm === true ? <DishForm categoryId={this.categoryId} dishId={this.dishId} dish={this.dish} submitCallback={this._handleDishSubmit} /> : null;
+		const restPopup = this.data.length === 0 ? <RestaurantPopup submitCallback={this._handleRestCreate} /> : null;
 		return <ReactCSSTransitionGroup
 			transitionName="example"
 			transitionEnterTimeout={3500}
@@ -144,12 +146,15 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 			transitionAppearTimeout={3500}>
 			<div id="container">
 				<AppNavigation active={this.activeTab} setActive={this._setActiveTab} />
-				<a href="/logout">Logout</a>
-				<a href="/backoffice">BackOffice</a>
+				<div id="loginControl">
+					<a href="/logout">Logout</a>
+					<a href="/backoffice">BackOffice</a>
+				</div>
 				<NavigationPane category={this.category} data={this.data} callBackRestChoose={this._handleRestChoose} callBackCategoryChoose={this._editCategory} callBackAddCategory={this._handleAddCategory}
 					restaurantIds={this.restaurantIds} callBackMenuClick={this._editMenu} callBackMenuDelete={this._handleDeleteMenu} callBackCategoryDelete={this._handleDeleteCategory}
 					callBackDishChoose={this._editDish} />
 				{restForm}
+				{restPopup}
 				{menuForm}
 				{categoryForm}
 				{dishForm}

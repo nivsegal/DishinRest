@@ -10,7 +10,7 @@ import { observer } from "mobx-react";
 	_setActive = e => {
 		this.props.setActive(e.currentTarget.id);
 	}
-
+	
 	render() {
 		const { active } = this.props;
 		return <div id="dishinLeftStrip" className="navigationPane">
