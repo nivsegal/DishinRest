@@ -82,6 +82,10 @@ import DetailsRestForm from './detailsRestForm.jsx';
 
 	_handleSubmit = e => {
 		e.preventDefault();
+		if (this.viewStage === 'basic') {
+			this.viewStage = 'details';
+			return false;
+		}
 		const { restName, address, description, tagsChosen } = this;
 		const tags = this.tags.filter((tag, ind) => { return this.tagsChosen[ind] === true });
 		const hours = this._normalizeHours();
@@ -141,6 +145,11 @@ import DetailsRestForm from './detailsRestForm.jsx';
 			this.tagsChosen[index] = false;
 	}
 
+	_goBack = () => {
+		this.viewStage = 'basic';
+		return false;
+	}
+
 	render() {
 		const inputPropsAddress = {
 			value: this.address,
@@ -155,20 +164,25 @@ import DetailsRestForm from './detailsRestForm.jsx';
 				input: 'form-control'
 			}
 		const currentForm = this.viewStage === 'basic' ? <BaseRestForm /> : <DetailsRestForm tags={this.tags} tagsChosen={this.tagsChosen} />;
-		return <div id="popupFormContainer">
-			<ReactCSSTransitionGroup
-				transitionName="example"
-				transitionEnterTimeout={3500}
-				transitionLeaveTimeout={3500}
-				transitionAppear={true}
-				transitionAppearTimeout={3500}>
-				<h4>CREATE A RESTAURANT</h4>
-				<form onSubmit={this._handleSubmit} id="restForm">
-					{currentForm}
-					<button type="submit">Save and Go to Details</button>
-				</form>
-			</ReactCSSTransitionGroup>
-		</div>;
+		const backBtn = this.viewStage === 'details' ? <button onClick={this._goBack}>
+			<span className="glyphicon glyphicon-arrow-left"></span>Back</button> : null;
+		return <div id="content">
+			<div id="popupFormContainer" className={this.viewStage === 'basic' ? '' : 'details'}>
+				<ReactCSSTransitionGroup
+					transitionName="example"
+					transitionEnterTimeout={8500}
+					transitionLeaveTimeout={8500}
+					transitionAppear={true}
+					transitionAppearTimeout={8500}>
+					<h4>{this.viewStage === 'basic' ? 'CREATE A RESTAURANT' : 'RESTAURANT DETAILS'}</h4>
+					<form onSubmit={this._handleSubmit} id="restForm">
+						{currentForm}
+						{backBtn}
+						<button type="submit">{this.viewStage === 'basic' ? 'Save and Go to Details' : 'Create Restaurant'}</button>
+					</form>
+				</ReactCSSTransitionGroup>
+			</div>
+		</div >;
 	}
 }
 

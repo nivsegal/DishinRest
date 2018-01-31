@@ -37,11 +37,13 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 	render() {
 		const inputPropsAddress = {
 			value: this.address,
-			onChange: this._onChangeAddress
+			onChange: this._onChangeAddress,
+			dir: 'auto'
 		},
 			inputPropsName = {
 				value: this.restName,
-				onChange: this._onChangeRestName
+				onChange: this._onChangeRestName,
+				dir: 'auto'
 			},
 			cssClasses = {
 				root: 'autocompleteRoot',
@@ -59,7 +61,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 			</div>
 			<div className="red">{this.descriptionErrMsg}</div>
 			<div className="form-group">
-				<label><span>Description</span></label><textarea rows="10" name="description" value={this.description} onChange={this._setValue} className="form-control" ></textarea>
+				<label><span>Description</span></label><textarea dir="auto" rows="10" name="description" value={this.description} onChange={this._setValue} className="form-control" ></textarea>
 			</div>
 		</div >;
 	}

@@ -18,7 +18,9 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
 	'styles/bootstrap.css',
-
+	'styles/main.css',
+	'styles/ion.rangeSlider.css',
+	'styles/ion.rangeSlider.skinFlat.css',
   'styles/**/*.css'
 ];
 

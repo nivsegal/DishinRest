@@ -4,6 +4,8 @@ import { observable, action, autorun } from "mobx";
 import { observer } from "mobx-react";
 import TimePicker from 'rc-time-picker';
 import moment from 'moment';
+import $ from 'jquery';
+import ionRangeSlider from 'ion-rangeslider';
 
 @observer class DetailsRestForm extends React.Component {
 
@@ -20,6 +22,14 @@ import moment from 'moment';
 
 	componentWillMount() {
 		this._initHours();
+	}
+
+	componentDidMount() {
+		$("input[name^='hourRange_']").ionRangeSlider({
+			type: "double",
+			from: '10:00',
+			to: '00:00'
+		});
 	}
 
 	_handleCheckboxChange = (e, index) => {
@@ -39,19 +49,23 @@ import moment from 'moment';
 	}
 
 	render() {
+		// const openingHours = this.days.map((day, index) => {
+		// 	return <div className="form-group" key={index}><span className="day">{day}: </span>
+		// 		<span className="inline">From</span> <TimePicker popupClassName="hoursPopup" className="hours"
+		// 			onChange={e => { this._onTimeChange(index, 'start', e) }} format={this.format} showSecond={false} name={'days[' + index + '][start]'}
+		// 			value={this.hours[index]['start']} />
+		// 		<span className="inline">To</span> <TimePicker popupClassName="hoursPopup" value={this.hours[index]['end']} className="hours" onChange={e => { this._onTimeChange(index, 'end', e) }}
+		// 			format={this.format} showSecond={false} name={'days[' + index + '][end]'} />
+		// 	</div>;
+		// });
 		const openingHours = this.days.map((day, index) => {
-			return <div className="form-group" key={index}><span className="day">{day}: </span>
-				<span className="inline">From</span> <TimePicker popupClassName="hoursPopup" className="hours"
-					onChange={e => { this._onTimeChange(index, 'start', e) }} format={this.format} showSecond={false} name={'days[' + index + '][start]'}
-					value={this.hours[index]['start']} />
-				<span className="inline">To</span> <TimePicker popupClassName="hoursPopup" value={this.hours[index]['end']} className="hours" onChange={e => { this._onTimeChange(index, 'end', e) }}
-					format={this.format} showSecond={false} name={'days[' + index + '][end]'} />
-			</div>;
+			return <div className="form-group" key={index}><span className="day">{day.substr(0, 3)}</span>
+				<input id={'hourRange_' + index} type="text" value="" name={'hourRange_' + index} />
+			</div>
 		});
 		return <div id="detailsRestForm">
-			<div className="form-group"><span>Opening Hours</span></div>{openingHours}
 			<div className="form-group">
-				<label><span>Tags: </span></label>
+				<label><span className="header">Tags</span></label>
 				<ul>{this.props.tags.map((tag, key) => {
 					return <li key={key} className="tag">
 						<div className="styledCheckbox">
@@ -63,7 +77,9 @@ import moment from 'moment';
 					</li>
 				})}
 				</ul>
+				<div className="clear"></div>
 			</div>
+			<div id="activityHoursContainer"><div className="form-group"><span className="header">Activity Hours</span></div>{openingHours}</div>
 		</div >;
 	}
 }

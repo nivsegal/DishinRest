@@ -144,7 +144,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 			transitionLeaveTimeout={3500}
 			transitionAppear={true}
 			transitionAppearTimeout={3500}>
-			<div id="container">
 				<AppNavigation active={this.activeTab} setActive={this._setActiveTab} />
 				<div id="loginControl">
 					<a href="/logout">Logout</a>
@@ -158,7 +157,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 				{menuForm}
 				{categoryForm}
 				{dishForm}
-			</div>
 		</ReactCSSTransitionGroup>;
 	}
 }

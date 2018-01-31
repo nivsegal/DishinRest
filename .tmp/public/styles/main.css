@@ -16,7 +16,7 @@
 }
 
 html {
-	overflow: scroll;
+	overflow: hidden;
 	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
 	height: 100%;
@@ -62,12 +62,12 @@ body {
 #content {
 	width: 100%;
 	height:100%;
-	background: url(../images/backgroundRest.png) no-repeat;
+	background: url(../images/backgroundRest.png) 0 0 no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	padding: 130px 0;
+	padding: 140px 0;
 	text-align: center;
 	position: relative;
 }
@@ -93,13 +93,13 @@ h3 {
 #restForm > div > label { 
 	vertical-align: middle;
 }
-
+/* 
 #restForm > div span {
 	width: 316px;
 	display: inline-block;
 	text-align: left;
 	font-size: 20pt;
-}
+} */
 
 #restForm input, #restForm textarea{
 	display: inline-block;
@@ -192,6 +192,10 @@ button {
 	float: right;
 }
 
+.clear {
+	clear:both;
+}
+
 .buttons {
 	padding: 20px 0;
 }
@@ -226,8 +230,7 @@ button {
 
 #formContainer {
 	width: 60%;
-	margin:0 auto;
-	padding:40px 0;
+	margin:40px 0;
 }
 
 #formContainer > span {
@@ -556,7 +559,7 @@ input.button:hover {
 	border: 1px solid #979797;
 	margin: 0 auto;
 	border-radius: 20px;
-	margin-top: 3%;
+	background: #fff;
 }
 
 #popupFormContainer h4{
@@ -564,15 +567,15 @@ input.button:hover {
 	color: #525252;
 	font-size: 40px;
 	font-weight: bold;
-	padding: 45px 0 18px;
-	border-bottom: 1.5px solid #979797;
+	margin: 45px auto 18px;
+	border-bottom: 1px solid #979797;
 	width: 60%;
-	margin: 0 auto;
 	text-align: center;
 }
 
 #popupFormContainer form#restForm{
-	padding-top: 15px;
+	padding-top: 0;
+	margin-top: 15px;
 	width: 100%;
 	text-align: center;
 }
@@ -595,4 +598,56 @@ input.button:hover {
 	color:rgba(62, 42, 43, 0.5);
 	font-family: Lato-Bold, Helvetica, Arial, sans-serif;
 	font-size: 15px;
+}
+
+#popupFormContainer.details {
+	width:35%;
+}
+
+#popupFormContainer.details h4{
+	font-size: 50px;
+	width:85%;
+	letter-spacing: 3px;
+}
+
+#detailsRestForm {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#detailsRestForm > div span:not([class^="irs"]) {
+	color:rgba(62, 42, 43, 0.5);
+	font-family: Lato-Regular, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+}
+#detailsRestForm > div span.header {
+	margin: 30px 0 30px 10px;
+	display: block;
+}
+
+#detailsRestForm input[type='checkbox'] {
+	margin-top: -9px;
+	margin-left: 2px;
+}
+
+#detailsRestForm .styledCheckbox label:after {
+	left: 5px;
+}
+
+#detailsRestForm .styledCheckbox label {
+	border: transparent;
+	border-radius: 5px;
+	width:18px;
+	height:18px;
+	font-size: 18px;
+	font-weight: 100;
+	font-family: Lato-Regular, Helvetica, Arial, sans-serif;
+	line-height: 18px;
+	text-indent: 28px;
+}
+
+#detailsRestForm .tag {
+	width: 33%;
+	float: left;
 }
