@@ -59,8 +59,9 @@ import ionRangeSlider from 'ion-rangeslider';
 		// 	</div>;
 		// });
 		const openingHours = this.days.map((day, index) => {
-			return <div className="form-group" key={index}><span className="day">{day.substr(0, 3)}</span>
+			return <div className="form-group" key={index}><span className="day">{day.substr(0, 3).toUpperCase()}</span>
 				<input id={'hourRange_' + index} type="text" value="" name={'hourRange_' + index} />
+				<div className="clear"></div>
 			</div>
 		});
 		return <div id="detailsRestForm">

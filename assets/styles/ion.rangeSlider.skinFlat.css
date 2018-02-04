@@ -15,8 +15,14 @@
     background: url(../images/sprite-skin-flat.png) repeat-x;
 }
 
+span[class^="js-irs"] {
+	margin-top:-19px;
+}
+
 .irs {
-    height: 40px;
+		height: 40px;
+		width: 85%;
+		float: left;
 }
 .irs-with-grid {
     height: 60px;
