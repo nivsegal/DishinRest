@@ -19,6 +19,7 @@ import ionRangeSlider from 'ion-rangeslider';
 	@observable hours = [];
 	@observable tags = [];
 	@observable tagsChosen = [];
+	@observable activeDays = new Array(this.days.length).fill(true);
 
 	componentWillMount() {
 		this._initHours();
@@ -27,8 +28,16 @@ import ionRangeSlider from 'ion-rangeslider';
 	componentDidMount() {
 		$("input[name^='hourRange_']").ionRangeSlider({
 			type: "double",
-			from: '10:00',
-			to: '00:00'
+			min: +moment().hour(6).minute(0).format("X"),
+			max: +moment().add(1, "day").hour(5).minute(0).format("X"),
+			from: +moment().hour(10).minute(0).format("X"),
+			to: +moment().add(1, "day").hour(0).minute(0).format("X"),
+			hide_min_max: true,
+			step: 1800,
+			prettify: function (num) {
+					var m = moment(num, "X");
+					return m.format("HH:mm");
+			}
 		});
 	}
 
@@ -48,20 +57,16 @@ import ionRangeSlider from 'ion-rangeslider';
 		});
 	}
 
+	_toggleSlider = (e, index) => {
+		this.activeDays[index] = !this.activeDays[index];
+		var slider = $('#hourRange_' + index).data("ionRangeSlider");
+		slider.update({disable: !this.activeDays[index]});
+	}
+
 	render() {
-		// const openingHours = this.days.map((day, index) => {
-		// 	return <div className="form-group" key={index}><span className="day">{day}: </span>
-		// 		<span className="inline">From</span> <TimePicker popupClassName="hoursPopup" className="hours"
-		// 			onChange={e => { this._onTimeChange(index, 'start', e) }} format={this.format} showSecond={false} name={'days[' + index + '][start]'}
-		// 			value={this.hours[index]['start']} />
-		// 		<span className="inline">To</span> <TimePicker popupClassName="hoursPopup" value={this.hours[index]['end']} className="hours" onChange={e => { this._onTimeChange(index, 'end', e) }}
-		// 			format={this.format} showSecond={false} name={'days[' + index + '][end]'} />
-		// 	</div>;
-		// });
 		const openingHours = this.days.map((day, index) => {
-			return <div className="form-group" key={index}><span className="day">{day.substr(0, 3).toUpperCase()}</span>
-				<input id={'hourRange_' + index} type="text" value="" name={'hourRange_' + index} />
-				<div className="clear"></div>
+			return <div className="form-group" key={index}><span className={this.activeDays[index] === true ? 'day on': 'day'} onClick={(e) => {this._toggleSlider(e, index)}}>{day.substr(0, 3).toUpperCase()}</span>
+				<div className="sliderContainer"><input id={'hourRange_' + index} type="text" value="" name={'hourRange_' + index} /></div>
 			</div>
 		});
 		return <div id="detailsRestForm">

@@ -166,7 +166,7 @@ import DetailsRestForm from './detailsRestForm.jsx';
 		const currentForm = this.viewStage === 'basic' ? <BaseRestForm /> : <DetailsRestForm tags={this.tags} tagsChosen={this.tagsChosen} />;
 		const backBtn = this.viewStage === 'details' ? <button onClick={this._goBack}>
 			<span className="glyphicon glyphicon-arrow-left"></span>Back</button> : null;
-		return <div id="content">
+		return <div id="content" className={this.viewStage === 'basic' ? '' : 'details'}>
 			<div id="popupFormContainer" className={this.viewStage === 'basic' ? '' : 'details'}>
 				<ReactCSSTransitionGroup
 					transitionName="example"
