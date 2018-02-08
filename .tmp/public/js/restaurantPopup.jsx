@@ -147,7 +147,7 @@ import DetailsRestForm from './detailsRestForm.jsx';
 
 	_goBack = () => {
 		this.viewStage = 'basic';
-		return false;
+		this.forceUpdate();
 	}
 
 	render() {
@@ -164,20 +164,19 @@ import DetailsRestForm from './detailsRestForm.jsx';
 				input: 'form-control'
 			}
 		const currentForm = this.viewStage === 'basic' ? <BaseRestForm /> : <DetailsRestForm tags={this.tags} tagsChosen={this.tagsChosen} />;
-		const backBtn = this.viewStage === 'details' ? <button onClick={this._goBack}>
-			<span className="glyphicon glyphicon-arrow-left"></span>Back</button> : null;
+		const backBtn = this.viewStage === 'details' ? <span className="backBtn" onClick={this._goBack}></span> : null;
 		return <div id="content" className={this.viewStage === 'basic' ? '' : 'details'}>
 			<div id="popupFormContainer" className={this.viewStage === 'basic' ? '' : 'details'}>
+				{backBtn}
 				<ReactCSSTransitionGroup
 					transitionName="example"
-					transitionEnterTimeout={8500}
-					transitionLeaveTimeout={8500}
+					transitionEnterTimeout={1500}
+					transitionLeaveTimeout={1500}
 					transitionAppear={true}
-					transitionAppearTimeout={8500}>
+					transitionAppearTimeout={1500}>
 					<h4>{this.viewStage === 'basic' ? 'CREATE A RESTAURANT' : 'RESTAURANT DETAILS'}</h4>
 					<form onSubmit={this._handleSubmit} id="restForm">
 						{currentForm}
-						{backBtn}
 						<button type="submit">{this.viewStage === 'basic' ? 'Save and Go to Details' : 'Create Restaurant'}</button>
 					</form>
 				</ReactCSSTransitionGroup>

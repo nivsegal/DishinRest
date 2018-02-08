@@ -458,7 +458,7 @@ input.button {
 	box-shadow: 2px 2px 4px #888888;
 }
 
-input.button:hover {
+input.button:hover, button:hover {
 	opacity: 0.6;
 }
 
@@ -668,6 +668,11 @@ input.button:hover {
 	text-align: center;
 	font-weight: 400;
 	cursor: pointer;
+	display: inline-block;
+}
+
+#detailsRestForm > div span.day:hover {
+	opacity: 0.6;
 }
 
 #detailsRestForm > div span.day.on {
@@ -681,4 +686,19 @@ input.button:hover {
 	width:85%;
 	display: inline-block;
 	margin-left:15px;
+}
+
+.backBtn {
+	background: url(../images/back.png) 0 0 no-repeat;
+	width: 14px;
+	height: 24px;
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	top: 56px;
+	left: 77px;
+}
+
+.backBtn:hover {
+	background:url(../images/back_hover.png) -1px -1px no-repeat;
 }
