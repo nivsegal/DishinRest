@@ -29,5 +29,5 @@ module.exports = {
 			collection: 'tag',
 			via: 'restFeatures'
 		},
-	}
+	},
 };

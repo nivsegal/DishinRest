@@ -702,3 +702,7 @@ input.button:hover, button:hover {
 .backBtn:hover {
 	background:url(../images/back_hover.png) -1px -1px no-repeat;
 }
+
+.hidden {
+	display:none;
+}

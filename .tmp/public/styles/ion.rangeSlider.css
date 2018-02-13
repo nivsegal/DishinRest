@@ -36,7 +36,8 @@
 
     .irs-bar {
         position: absolute; display: block;
-        left: 0; width: 0;
+				left: 0; width: 0;
+				z-index: 2 !important;
     }
         .irs-bar-edge {
             position: absolute; display: block;
@@ -63,7 +64,7 @@
 
         }
         .irs-slider.type_last {
-            z-index: 2;
+            z-index: 2 !important;
         }
 
     .irs-min {

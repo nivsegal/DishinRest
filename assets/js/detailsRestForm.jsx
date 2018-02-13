@@ -34,10 +34,15 @@ import ionRangeSlider from 'ion-rangeslider';
 			to: +moment().add(1, "day").hour(0).minute(0).format("X"),
 			hide_min_max: true,
 			step: 1800,
-			prettify: function (num) {
-					var m = moment(num, "X");
-					return m.format("HH:mm");
-			}
+			prettify: num => {
+				var m = moment(num, "X");
+				return m.format("HH:mm");
+			},
+			onChange: data => {
+				const index = data.input[0].name.slice(-1);
+				this.hours[index] = { start: moment(data.from), end: moment(data.to)};
+				this.props.setActivityHours(this.hours);
+			},
 		});
 	}
 
@@ -47,6 +52,8 @@ import ionRangeSlider from 'ion-rangeslider';
 			this.tagsChosen[index] = true;
 		else
 			this.tagsChosen[index] = false;
+
+		this.props.setTags(this.tagsChosen);
 	}
 
 	_initHours = () => {
@@ -60,16 +67,18 @@ import ionRangeSlider from 'ion-rangeslider';
 	_toggleSlider = (e, index) => {
 		this.activeDays[index] = !this.activeDays[index];
 		var slider = $('#hourRange_' + index).data("ionRangeSlider");
-		slider.update({disable: !this.activeDays[index]});
+		slider.update({ disable: !this.activeDays[index] });
+		if (this.activeDays[index] === true) //means the click disabled the day
+			this.hours.remove(this.hours[index]);
 	}
 
 	render() {
 		const openingHours = this.days.map((day, index) => {
-			return <div className="form-group" key={index}><span className={this.activeDays[index] === true ? 'day on': 'day'} onClick={(e) => {this._toggleSlider(e, index)}}>{day.substr(0, 3).toUpperCase()}</span>
+			return <div className="form-group" key={index}><span className={this.activeDays[index] === true ? 'day on' : 'day'} onClick={(e) => { this._toggleSlider(e, index) }}>{day.substr(0, 3).toUpperCase()}</span>
 				<div className="sliderContainer"><input id={'hourRange_' + index} type="text" value="" name={'hourRange_' + index} /></div>
 			</div>
 		});
-		return <div id="detailsRestForm">
+		return <div id="detailsRestForm" className={this.props.className}>
 			<div className="form-group">
 				<label><span className="header">Tags</span></label>
 				<ul>{this.props.tags.map((tag, key) => {

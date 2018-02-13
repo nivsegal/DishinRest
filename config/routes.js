@@ -68,7 +68,7 @@ module.exports.routes = {
 	'get /backoffice' : 'BackofficeController.index',
 	'post /backoffice/uploadRest' : 'BackofficeController.upload',
 
-	// 'POST /restaurant/create': 'RestaurantController.create',
+	'POST /restaurant/create': 'RestaurantController.create',
 
   /***************************************************************************
   *                                                                          *

@@ -12,7 +12,7 @@
 .irs-bar,
 .irs-bar-edge,
 .irs-slider {
-    background: url(../images/sprite.png) repeat-x;
+    background: url(../images/Sprite_new.png) repeat-x;
 }
 
 .irs {
@@ -22,28 +22,28 @@
     height: 70px;
 }
 .irs-line {
-    height: 6px; top: 25px;
+    height: 7px; top: 25px;
 }
     .irs-line-left {
-        height: 6px;
-        background-position: 0 -31px;
+        height: 7px;
+        background-position: 0 -30px;
     }
     .irs-line-mid {
-        height: 6px;
-        background-position: 0 -1px;
+        height: 7px;
+        background-position: 0 -30px;
     }
     .irs-line-right {
-        height: 6px;
-        background-position: 100% -31px;
+        height: 7px;
+        background-position: 100% -30px;
     }
 
 .irs-bar {
-    height: 6px; top: 25px;
+    height: 7px; top: 25px;
     background-position: 0 -61px;
 }
     .irs-bar-edge {
         top: 25px;
-        height: 6px; width: 6px;
+        height: 7px; width: 7px;
         background-position: 0 -91px;
     }
 
@@ -60,7 +60,7 @@
 	width: 14px;
 	height: 14px;
 	top: 21px;
-	background-position: 0 -117px;
+	background-position: 0 -125px;
 }
 .irs-slider.state_hover, .irs-slider:hover {
     /* background-position: 0 -151px; */

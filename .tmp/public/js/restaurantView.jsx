@@ -132,6 +132,10 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 		this.activeTab = name;
 	}
 
+	_handleRestCreate = () => {
+
+	}
+
 	render() {
 		const restForm = this.showForm === true ? <RestaurantForm restaurant={this.restaurant} submitCallback={this._handleSubmit} /> : null;
 		const menuForm = this.showMenuForm === true ? <MenuForm menuId={this.menuId} restaurant={this.restaurant} submitCallback={this._handleMenuSubmit} /> : null;

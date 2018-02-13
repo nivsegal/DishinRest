@@ -6,6 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import BaseRestForm from './baseRestForm.jsx';
 import DetailsRestForm from './detailsRestForm.jsx';
+import moment from 'moment';
 
 @observer class RestaurantPopup extends React.Component {
 
@@ -26,10 +27,8 @@ import DetailsRestForm from './detailsRestForm.jsx';
 	@observable restaurant = null;
 	@observable viewStage = 'basic';
 
-	_setValue = e => {
-		this[e.target.name] = e.target.value;
-		const errMsg = e.target.name + 'ErrMsg';
-		this[errMsg] = [];
+	_setValue = (name, val) => {
+		this[name] = val;
 	}
 
 	componentWillMount() {
@@ -107,6 +106,10 @@ import DetailsRestForm from './detailsRestForm.jsx';
 		return false;
 	}
 
+	_setTags = tagsArr => {
+		this.tagsChosen = tagsArr;
+	}
+
 	_validate = () => {
 		const emptyErrMsg = 'This value cannot be empty';
 		let validated = false;
@@ -163,7 +166,6 @@ import DetailsRestForm from './detailsRestForm.jsx';
 				root: 'autocompleteRoot',
 				input: 'form-control'
 			}
-		const currentForm = this.viewStage === 'basic' ? <BaseRestForm /> : <DetailsRestForm tags={this.tags} tagsChosen={this.tagsChosen} />;
 		const backBtn = this.viewStage === 'details' ? <span className="backBtn" onClick={this._goBack}></span> : null;
 		return <div id="content" className={this.viewStage === 'basic' ? '' : 'details'}>
 			<div id="popupFormContainer" className={this.viewStage === 'basic' ? '' : 'details'}>
@@ -176,7 +178,8 @@ import DetailsRestForm from './detailsRestForm.jsx';
 					transitionAppearTimeout={1500}>
 					<h4>{this.viewStage === 'basic' ? 'CREATE A RESTAURANT' : 'RESTAURANT DETAILS'}</h4>
 					<form onSubmit={this._handleSubmit} id="restForm">
-						{currentForm}
+						<BaseRestForm className={this.viewStage === 'details' ? 'hidden' : ''} setValue={this._setValue} />
+						<DetailsRestForm className={this.viewStage === 'basic' ? 'hidden' : ''} tags={this.tags} tagsChosen={this.tagsChosen} setActivityHours={this._setWorkingHours} setTags={this._setTags} />
 						<button type="submit">{this.viewStage === 'basic' ? 'Save and Go to Details' : 'Create Restaurant'}</button>
 					</form>
 				</ReactCSSTransitionGroup>

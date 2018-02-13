@@ -22,16 +22,19 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 		this[e.target.name] = e.target.value;
 		const errMsg = e.target.name + 'ErrMsg';
 		this[errMsg] = [];
+		this.props.setValue(e.target.name, e.target.value);
 	}
 
 	_onChangeAddress = address => {
 		this.address = address;
 		this.addressErrMsg = [];
+		this.props.setValue('address', address);
 	}
 
 	_onChangeRestName = name => {
 		this.restName = name;
 		this.restNameErrMsg = [];
+		this.props.setValue('restName', name);
 	}
 
 	render() {
@@ -50,7 +53,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 				input: 'form-control'
 			}
 
-		return <div id="baseRestForm">
+		return <div id="baseRestForm" className={this.props.className}>
 			<div className="red">{this.restNameErrMsg}</div>
 			<div className="form-group name">
 				<label><span>Restaurant Name</span></label><PlacesAutocomplete inputProps={inputPropsName} classNames={cssClasses} />
