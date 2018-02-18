@@ -91,9 +91,14 @@ import moment from 'moment';
 		let restaurantId = -1;
 		if (this._validate()) {
 			if (this.restaurant === null) {
-				io.socket.post('/restaurant/create', { restName, address, tags, description, hours }, (restaurant, jwres) => {
+				io.socket.request({
+					method: 'post',
+					url: '/restaurant/create',
+					data: { restName, address, tags, description, hours },
+					headers: { credentials: 'include' }
+				}, (restaurant, jwres) => {
 					restaurantId = restaurant.id;
-					io.socket.post('/restaurant/' + restaurantId, { 'tags': tags }, (updated, res) => {
+					io.socket.request({ method: 'post', url: '/restaurant/' + restaurantId, data: { 'tags': tags }, headers: { credentials: 'include' } }, (updated, res) => {
 						this.props.submitCallback(updated);
 					})
 				});

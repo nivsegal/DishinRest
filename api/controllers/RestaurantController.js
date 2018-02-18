@@ -27,7 +27,12 @@ module.exports = {
 	},
 
 	index: (req, res) => {
-		Restaurant.find({ owners: req.user }).populate('tags').populate('menus').populate('owners').then(restaurants => {
+		Restaurant.find().populate('tags').populate('menus').populate('owners').then(restaurants => {
+			restaurants.filter(restaurant =>{
+				return restaurant.owners.filter(user => {
+					return user.id === req.user.id;
+				})
+			})
 			return res.view('user/restaurant', { layout: 'user/layout', restaurants });
 		});
 	}

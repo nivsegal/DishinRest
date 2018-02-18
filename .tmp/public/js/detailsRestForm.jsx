@@ -68,7 +68,7 @@ import ionRangeSlider from 'ion-rangeslider';
 		this.activeDays[index] = !this.activeDays[index];
 		var slider = $('#hourRange_' + index).data("ionRangeSlider");
 		slider.update({ disable: !this.activeDays[index] });
-		if (this.activeDays[index] === true) //means the click disabled the day
+		if (this.activeDays[index] === false) //means the click disabled the day
 			this.hours.remove(this.hours[index]);
 	}
 

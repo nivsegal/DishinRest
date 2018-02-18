@@ -57,10 +57,11 @@
 }
 
 .irs-slider {
-	width: 14px;
-	height: 14px;
+	width: 16px;
+	height: 16px;
 	top: 21px;
-	background-position: 0 -125px;
+	padding: 4px;
+	background-position: -1px -125px;
 }
 .irs-slider.state_hover, .irs-slider:hover {
     /* background-position: 0 -151px; */
