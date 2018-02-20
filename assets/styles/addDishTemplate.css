@@ -1,0 +1,171 @@
+/*--------------------------------header--------------------------*/
+header{
+  /* background-color: yellow; */
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  height: 61px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
+  /* background-color: lightpink; */
+  border-bottom: 1px solid #ababab;
+  margin: 0 15px 0 110px;
+  padding: 10px 0;
+
+}
+/*title is not centered properly*/
+.pageHeader h1{
+    /* background-color: lightblue; */
+    margin: 0 auto;
+    font-family: "BebasNeue Regular";
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #565656;
+
+
+}
+/* .arrowWrap{
+  padding: 20px;
+} */
+.arrowLeft{
+  background-image: url('../images/back.png');
+  padding: 0;
+  width: 14px;
+  height: 24px;
+
+}
+.arrowLeft:hover{
+  background-image: url('../images/back_hover.png');
+  }
+
+}
+.arrowLeft a{
+  outline: none;
+  text-decoration: none;
+}
+
+.menuAuthor{
+  /* background-color: lightgreen; */
+  padding: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
+
+}
+.authorPhoto{
+  width: 28px;
+  height: 28px;
+  background-image: url('../images/oval.png');
+  border-radius: 50%;
+
+}
+.authorName{
+  font-family: 'Lato-Regular', sans-serif;
+  font-size: 16px;
+  font-weight: 550;
+  text-align: center;
+  font-stretch: semi-condensed;
+  color: #000000;
+  padding-left: 10px;
+  padding-right: 25px;
+  /* background-color: lightgrey; */
+}
+.notificationIcon{
+  width: 20px;
+  height: 22px;
+  background-image: url('../images/icons-svg/shape.svg');
+  color: black;
+  position: relative;
+
+}
+.notification{
+  padding: 25px 10px 25px 15px;
+  border-left: 1px solid #ababab;
+}
+.notificationPending{
+  background-color: #ed3b3a;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  left: 13px;
+  top: 12px;
+  transition: 0.3s ease;
+  /*display: none;*/ /*property changes according to state*/
+}
+
+/* .tabsRow {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  overflow: auto;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.dishCategories{
+
+}
+.catTab{
+  flex-basis: 100px;
+  /* border: 1px solid #a7a7a7; */
+  /* border-radius: 10%;
+  box-shadow: 3px 3px 12px -2px rgba(167,167,167,0.75);
+  cursor: pointer;
+
+}
+.catName{
+  text-decoration: none;
+}
+.catIcon{
+
+}
+.lactose{
+
+}
+.vegy{
+
+}
+.gluten{
+
+}
+.Vegan{
+
+} */
+.mainScreen{
+  width: 83%;
+  background-color: lightpink;
+  float: right;
+  margin-right: 4.5%;
+}
+.dishesGallery{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+.dishesGalleryItemWrap{
+
+}
+.dishPrew{
+  background-image: url('../images/pie.png');
+}
+.dishTitleWrap{
+
+}
+.dishTitle{
+  
+}
+
+/************************Dish details**************/

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Add Dish</title>
+	  <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../styles/addDishTemplate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+
+    <body>
+
+<!----------------------------------header---------------------------->
+        <header>
+          <div class="pageHeader">
+
+              <div class="arrowLeft">
+                <a href='#back'></a>
+              </div>
+
+            <h1>Add dish</h1>
+            <div class="menuAuthor">
+              <div class="authorPhoto">
+              </div>
+              <span class="authorName">Hatulia Taim</span>
+              <div class="notification">
+                <div class="notificationIcon">
+                <span class="notificationPending"></span>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="notification">
+              <span class="notificationPending"></span>
+            </div> -->
+          </div>
+        </header>
+
+    <div id="dishinLeftStrip" className="navigationPane">
+  			<span id="dishinLogo"></span>
+  			<div id="appNavigation">
+  				<div id="dashboard" className={active === 'dashboard' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon dashboard"></span>
+  					<span className="navTitle">Dash</span>
+  					<span className="indicator"></span>
+  				</div>
+  				<div id="menus" className={active === 'menus' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon menus"></span>
+  					<span className="navTitle">Men</span>
+  					<span className="indicator"></span>
+  				</div>
+  				<div id="categories" className={active === 'categories' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon categories"></span>
+  					<span className="navTitle">Cat</span>
+  					<span className="indicator"></span>
+  				</div>
+  				<div id="dishes" className={active === 'dishes' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon dishes"></span>
+  					<span className="navTitle">Dish</span>
+  					<span className="indicator"></span>
+  				</div>
+  			</div>
+  		</div>
+
+    </aside>
+
+
+<!----------------------------------Dishes categories buttons---------------------------->
+<!-- <div class="dishCategories tabsRow">
+  <div class="catTab">
+    <span class="catIcon lactose"></span>
+    <a href="#lactosefree" class="catName">Lactose Free</a>
+  </div>
+  <div class="catTab">
+    <span class="catIcon vegy"></span>
+    <a href="#vegetarian" class="catName">Vegetarian</a>
+  </div>
+  <div class="catTab">
+    <span class="catIcon gluten"></span>
+    <a href="#glutenfree" class="catName">Gluten Free</a>
+  </div>
+  <div class="catTab">
+    <span class="catIcon vegan"></span>
+    <a href="#vegan" class="catName">Vegan</a>
+  </div>
+</div> -->
+<!----------------------------------Dish details---------------------------->
+<div class="mainScreen">
+<div class="dishesGallery">
+  <div class="dishesGalleryItemWrap">
+    <div class="dishPrew">
+    </div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Lorem Ipsum</p>
+    </div>
+  </div>
+  </div>
+
+
+</div>
+    </body>
