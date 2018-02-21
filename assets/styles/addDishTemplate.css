@@ -1,11 +1,18 @@
 /*--------------------------------header--------------------------*/
+.pageWrap{
+  padding: 15px 15px;
+  float: right;
+  margin: 0 0 0 100px;
+  /* background-color: lightyellow; */
+
+}
 header{
-  /* background-color: yellow; */
   box-sizing: border-box;
   width: 100%;
-  margin: 0;
-  height: 61px;
+  margin: 0 0 25px 0;
+  height: 60px;
 }
+
 
 .pageHeader {
   display: flex;
@@ -13,10 +20,9 @@ header{
   align-content: center;
   justify-content: center;
   overflow: auto;
-  /* background-color: lightpink; */
   border-bottom: 1px solid #ababab;
-  margin: 0 15px 0 110px;
-  padding: 10px 0;
+  padding-bottom: 10px;
+
 
 }
 /*title is not centered properly*/
@@ -103,7 +109,7 @@ header{
   /*display: none;*/ /*property changes according to state*/
 }
 
-/* .tabsRow {
+.tabsRow {
   display: flex;
   align-items: center;
   align-content: center;
@@ -117,20 +123,32 @@ header{
 }
 .catTab{
   flex-basis: 100px;
-  /* border: 1px solid #a7a7a7; */
-  /* border-radius: 10%;
-  box-shadow: 3px 3px 12px -2px rgba(167,167,167,0.75);
+  border: 1px solid transparent;
+  border-radius: 25px;
   cursor: pointer;
-
+  box-shadow:  0px 4px 10px 0px rgba(201,201,201,1);
+  padding: 5px;
+}
+.catTab:hover{
+  border: 1px solid #ea4c4b;
 }
 .catName{
   text-decoration: none;
+  font-family: 'Lato-Regular', sans-serif;
+  color: #a7a7a7;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 10px 15px 10px 10px;
+  background-color: lightyellow;
+
 }
 .catIcon{
 
 }
 .lactose{
-
+  background-image: url('../images/milk_icon.png');
+  background-repeat: no-repeat;
 }
 .vegy{
 
@@ -142,30 +160,60 @@ header{
 
 } */
 .mainScreen{
-  width: 83%;
-  background-color: lightpink;
-  float: right;
-  margin-right: 4.5%;
+  width: 100%;
+  /*float: right;*/
+
+
 }
 .dishesGallery{
   display: flex;
-  align-items: center;
-  align-content: center;
+  align-items: flex-start;
+  align-content: space-around;
   justify-content: space-around;
   flex-wrap: wrap;
   overflow-y: scroll;
+  width: 50%;
+  height: 90vh;
+  padding: 25px;
 }
 .dishesGalleryItemWrap{
-
+  background-color: white;
+  cursor: pointer;
+  height: 200px;
+  width: 160px;
+  border-radius: 15px;
+  transition: .5s ease;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  overflow: hidden;
+  box-shadow:  0px 4px 10px 0px rgba(201,201,201,1);
+  margin-bottom: 25px;
+}
+.dishesGalleryItemWrap:hover{
+  border: 3px solid #ea4c4b;
+}
+.dishesGalleryItemWrap a{
+  text-decoration: none;
 }
 .dishPrew{
-  background-image: url('../images/pie.png');
+  width: 100%;
+  height: 120px;
+  background-image: url('../images/kruvit.png'); /*change property due to id*/
+  background-repeat: no-repeat;
+  background-size: 160px 110px;
 }
-.dishTitleWrap{
 
+.dishTitleWrap{
+  /*margin: 0 auto;*/
 }
 .dishTitle{
-  
+  font-family: 'Lato-Bold', sans-serif;
+  color: #615f5f;
+  font-size: 13px;
+  font-weight: 550;
+  letter-spacing: 0.3px;
+  text-align: center;
+  padding-top: 5px;
 }
 
 /************************Dish details**************/
