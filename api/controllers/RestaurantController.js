@@ -11,10 +11,10 @@ module.exports = {
 		Restaurant.create(inputs)
 			.then(restaurant => {
 				return User.find(req.user.id)
-					.then(user => {
-						restaurant.owners.add(req.user);
-						return restaurant.save();
-					})
+			.then(user => {
+				restaurant.owners.add(req.user);
+				return restaurant.save();
+			})
 			})
 			.then(updated => {
 				return res.json('success');
@@ -23,9 +23,15 @@ module.exports = {
 	},
 
 	index: (req, res) => {
-		Restaurant.find().populate('tags').populate('menus').populate('owners', { id: req.user.id }).then(restaurants => {
-			return res.view('user/restaurant', { layout: 'user/layout', restaurants });
-		});
+		// console.log(req.user)
+		// Restaurant.find().populate('tags').populate('menus').populate('owners').then(restaurants => {
+		// 	return res.view('user/restaurant', { layout: 'user/layout', restaurants });
+		// });
+		User.findOne(req.user.id).populate('restaurants').then ( data => {
+				return res.view('user/restaurant', { layout: 'user/layout', data });
+		}).catch(err => {
+			console.log(err);
+		}) 
 	}
 };
 

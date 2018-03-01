@@ -10,20 +10,34 @@ import DishForm from './dishForm.jsx';
 import MenuForm from './menuForm.jsx';
 import AppNavigation from './appNavigation.jsx';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Header from './header.jsx';
+import MenuLayout from './menuLayout.jsx';
+import MenuPopup from './menuPopup.jsx';
 
 @observer class RestaurantView extends React.Component {
 
 	constructor(props) {
 		super(props);
+
+		this.headerTexts = {
+			'menus': 'My Menus',
+			'categories': 'My Categories',
+			'dishes': 'My Dishes',
+			'dashboard': 'My Dashboard'
+		}
 	}
 
 	@observable data = this.props.data;
+	@observable userData = data;
+	@observable menus = null;
+	@observable notifications = [];
 	@observable restaurant = null;
-	@observable restaurantIds = this.props.data.map(restaurant => restaurant.id);
+	@observable restaurantIds = this.props.data.restaurants.map(restaurant => restaurant.id);
 	@observable showForm = false;
 	@observable showMenuForm = false;
 	@observable showCategoryForm = false;
 	@observable showdishForm = false;
+	@observable showMenuPopup = false;
 	@observable menuId = null;
 	@observable dishId = null;
 	@observable categoryId = null;
@@ -31,6 +45,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 	@observable category = null;
 	@observable dish = null;
 	@observable activeTab = 'dashboard';
+	@observable headerText = this.headerTexts.dashboard;
 
 	_handleRestChoose = (option, del, menu) => {
 		if (menu === true) {
@@ -38,7 +53,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 			this.showForm = false;
 			this.menuId = null;
 		} else if (del !== true) {
-			this.restaurant = option !== null ? this.data.find((elem, idx) => { return (elem.id === option.value) }) : option;
+			this.restaurant = option !== null ? this.data.restaurants.find((elem, idx) => { return (elem.id === option.value) }) : option;
 			this.showForm = true;
 			this.showMenuForm = false;
 		} else if (del === true) {
@@ -55,7 +70,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 	_handleSubmit = restaurant => {
 		this.restaurant = restaurant;
-		this.data.push(restaurant);
+		this.data.restaurants.push(restaurant);
 		this.restaurantIds.push(restaurant.id);
 		this.showForm = false;
 	}
@@ -78,7 +93,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 		this.showMenuForm = false;
 		this.menuId = menu.id;
 		this.menu = menu;
-		const restaurantIndex = this.data.findIndex(restaurant => { return restaurant.id === menu.restaurant.id; });
+		const restaurantIndex = this.data.restaurants.findIndex(restaurant => { return restaurant.id === menu.restaurant.id; });
 		const menuIndex = this.data[restaurantIndex].menus.findIndex(existingMenu => { return existingMenu.id === menu.id; });
 		if (menuIndex === -1) { //new menu
 			this.data[restaurantIndex].menus.push(menu);
@@ -130,10 +145,16 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 	_setActiveTab = name => {
 		this.activeTab = name;
+		this.headerText = this.headerTexts[name];
 	}
 
 	_handleRestCreate = () => {
 
+	}
+
+	_handleAddMenu = () => {
+
+		this.showMenuPopup = true;
 	}
 
 	render() {
@@ -141,26 +162,30 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 		const menuForm = this.showMenuForm === true ? <MenuForm menuId={this.menuId} restaurant={this.restaurant} submitCallback={this._handleMenuSubmit} /> : null;
 		const categoryForm = this.showCategoryForm === true ? <CategoryForm menuId={this.menuId} categoryId={this.categoryId} category={this.category} submitCallback={this._handleCategorySubmit} /> : null;
 		const dishForm = this.showdishForm === true ? <DishForm categoryId={this.categoryId} dishId={this.dishId} dish={this.dish} submitCallback={this._handleDishSubmit} /> : null;
-		const restPopup = this.data.length === 0 ? <RestaurantPopup submitCallback={this._handleRestCreate} /> : null;
+		const header = this.data.restaurants.length > 0 ? <Header headerText={this.headerText} userData={this.userData} notifications={this.notifications} /> : null;
+		const restPopup = this.data.restaurants.length === 0 ? <RestaurantPopup submitCallback={this._handleRestCreate} /> : null;
+		const menuLayout = this.activeTab === 'menus' ? <MenuLayout menus={this.menus} noMenus={this.menus.length === 0} handleAddMenu={this._handleAddMenu} /> : null;
 		return <ReactCSSTransitionGroup
 			transitionName="example"
 			transitionEnterTimeout={3500}
 			transitionLeaveTimeout={3500}
 			transitionAppear={true}
 			transitionAppearTimeout={3500}>
-				<AppNavigation active={this.activeTab} setActive={this._setActiveTab} />
-				<div id="loginControl">
-					<a href="/logout">Logout</a>
-					<a href="/backoffice">BackOffice</a>
-				</div>
-				<NavigationPane category={this.category} data={this.data} callBackRestChoose={this._handleRestChoose} callBackCategoryChoose={this._editCategory} callBackAddCategory={this._handleAddCategory}
+			<AppNavigation active={this.activeTab} setActive={this._setActiveTab} />
+			<div id="loginControl">
+				<a href="/logout">Logout</a>
+				<a href="/backoffice">BackOffice</a>
+			</div>
+			{/* <NavigationPane category={this.category} data={this.data} callBackRestChoose={this._handleRestChoose} callBackCategoryChoose={this._editCategory} callBackAddCategory={this._handleAddCategory}
 					restaurantIds={this.restaurantIds} callBackMenuClick={this._editMenu} callBackMenuDelete={this._handleDeleteMenu} callBackCategoryDelete={this._handleDeleteCategory}
-					callBackDishChoose={this._editDish} />
-				{restForm}
-				{restPopup}
-				{menuForm}
-				{categoryForm}
-				{dishForm}
+					callBackDishChoose={this._editDish} /> */}
+			{header}
+			{menuLayout}
+			{restForm}
+			{restPopup}
+			{menuForm}
+			{categoryForm}
+			{dishForm}
 		</ReactCSSTransitionGroup>;
 	}
 }

@@ -24,6 +24,7 @@ import { observer } from "mobx-react";
 	@observable clicked = false;
 	@observable submitRestClicked = false;
 	@observable restName = '';
+	@observable userData = null;
 
 	render() {
 		let view, buttonsPane = null;
@@ -35,7 +36,7 @@ import { observer } from "mobx-react";
 			buttonsPane = <ButtonsPane clickCallBack={this._handleRestaurantClick} />
 		}
 		return <div>
-			<RestaurantView data={restaurants} />
+			<RestaurantView data={data} />
 		</div>;
 	}
 }

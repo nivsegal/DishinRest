@@ -553,7 +553,11 @@ input.button:hover, button:hover {
 #loginControl {
 	position: absolute;
 	top: 20px;
-	left: 200px;
+	left: 300px;
+}
+
+#loginControl > a {
+	margin-left: 10px;
 }
 
 #popupFormContainer {
@@ -708,3 +712,121 @@ input.button:hover, button:hover {
 .hidden {
 	display:none;
 }
+
+#header {
+	border-bottom: 1.5px solid rgba(151, 151, 151, 0.6);
+	min-height: 30px;
+	padding: 0.85% 0 0.75% 0;
+	width: 95%;
+	margin: 0 74px 0 80px;
+	line-height: 28px;
+}
+
+.headerText {
+	font-family: 'BebasNeue Regular';
+	color: #525252;
+	font-size: 28px;
+	line-height: 28px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+#userAreaContainer > a {
+	text-decoration: none;
+	color: #000;
+	height: 35px;
+	display: inline-block;
+	border-right: 1px solid;
+	padding-right: 16px;
+	line-height: 40px;
+}
+
+#userAreaContainer img{
+	border-radius:50%;
+	height:28px;
+	width: 28px;
+	margin-right: 8px;
+}
+
+#userAreaContainer {
+	float:right;
+	font-family: Lato-Regular, Helvetica, Arial, sans-serif;
+}
+
+#menusContainer {
+	width: 95%;
+	margin:0 auto;
+}
+
+.noElementsBtn {
+	height:140px;
+	width:140px;
+	border: 1px solid #7f000000;
+	margin: 20% auto;
+	box-shadow: 0px 2px 5px #888888;
+	border-radius: 10%;
+	cursor: pointer;
+	font-size:12px;
+	text-align: center;
+}
+.noElementsBtn:hover .plusIcon {
+	background: url(../images/plus_on.png) 0 0 no-repeat;
+}
+
+.plusIcon {
+	background: url(../images/plus_off.png) 0 0 no-repeat;
+	width: 46px;
+	height: 46px;
+	margin: 33.3% auto 24px;
+	display: block;
+}
+
+.notifications {
+	display: inline-block;
+	width: 28px;
+	height: 25px;
+	background: url(../images/notification_off.png) 0 0 no-repeat;
+	vertical-align: middle;
+	margin-left: 12px;
+}
+
+.notifications.active {
+	background: url(../images/notification_on.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+
+#overlay {
+	position: fixed; /* Sit on top of the page content */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0; 
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(105,105,105,0.75); /* Black background with opacity */
+	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer; /* Add a pointer on hover */
+}
+
+#popupFormContainer.menuPopupContainer {
+	position: absolute;
+	width: 30%;
+	min-width: 480px;
+	border: 1px solid #979797;
+	margin: 0 auto;
+	border-radius: 20px;
+	background: #fff;
+	z-index: 3;
+	left: 35%;
+}
+
+.closeBtn {
+	background: url(../images/x_circle.png) 0 0 no-repeat;
+	width: 24px;
+	height:24px;
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	cursor: pointer;
+}
+

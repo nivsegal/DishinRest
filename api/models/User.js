@@ -35,8 +35,8 @@ module.exports = {
 			defaultsTo: false
 		},
 		restaurants: {
-			collection: 'menuitem',
-			via: 'categories',
+			collection: 'restaurant',
+			via: 'owners',
 			dominant: true
 		},
 	},

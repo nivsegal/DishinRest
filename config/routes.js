@@ -51,6 +51,8 @@ module.exports.routes = {
 		view: 'signup'
 	},
 
+
+
 	'get /facebookSignup': 'AuthController.facebook',
 	'get /googleSignup': 'AuthController.google',
 	'get /instagramSignup': 'AuthController.instagram',

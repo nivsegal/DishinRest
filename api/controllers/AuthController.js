@@ -27,6 +27,7 @@ var AuthController = {
 	// https://developers.google.com/
 	// https://developers.google.com/accounts/docs/OAuth2Login#scope-param
 	google: (req, res, next) => {
+		const args = [req, res, next];
 		passport.authenticate('google', {
 			failureRedirect: '/',
 			scope: ['https://www.googleapis.com/auth/plus.login',
@@ -37,6 +38,7 @@ var AuthController = {
 	},
 
 	instagram: (req, res, next) => {
+		const args = [req, res, next];
 		passport.authenticate('instagram', {
 			failureRedirect: '/',
 			scope: ['public_content']
@@ -46,6 +48,7 @@ var AuthController = {
 	},
 
 	twitter: (req, res, next) => {
+		const args = [req, res, next];
 		passport.authenticate('twitter', {
 			failureRedirect: '/'
 		}, (err, user) => {
