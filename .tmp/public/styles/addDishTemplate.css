@@ -1,0 +1,390 @@
+/*--------------------------------header--------------------------*/
+html{
+  overflow-y: hidden; */
+  /* overflow-x:scroll; */
+}
+.pageWrap{
+  padding: 15px 15px;
+  float: right;
+  margin: 0 0 0 100px;
+  /* background-color: lightyellow; */
+}
+header{
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 10px 0;
+  height: 60px;
+}
+.basicFlexLayout{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+}
+.basicTitle{
+  margin: 0 auto;
+  font-family: "BebasNeue Regular";
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #565656;
+}
+.basicText{
+  font-family: 'Lato-Regular', sans-serif;
+  color: #615f5f;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: left;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
+  border-bottom: 1px solid #ababab;
+  padding-bottom: 10px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.pageHeader::-webkit-scrollbar {
+	width: 0px;  /* remove scrollbar space */
+	background: transparent;  /* optional: just make scrollbar invisible */
+}
+/*title is not centered properly*/
+.pageHeader h2{
+    font-size: 30px;
+    }
+
+.arrowLeft{
+  background-image: url('../images/back.png');
+  padding: 0;
+  width: 14px;
+  height: 24px;
+
+}
+.arrowLeft:hover{
+  background-image: url('../images/back_hover.png');
+  }
+
+}
+.arrowLeft a{
+  outline: none;
+  text-decoration: none;
+}
+
+.menuAuthor{
+  /* background-color: lightgreen; */
+  padding: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
+
+}
+.authorPhoto{
+  width: 28px;
+  height: 28px;
+  background-image: url('../images/oval.png');
+  border-radius: 50%;
+
+}
+.authorName{
+  font-family: 'Lato-Regular', sans-serif;
+  font-size: 16px;
+  font-weight: 550;
+  text-align: center;
+  font-stretch: semi-condensed;
+  color: #000000;
+  padding-left: 10px;
+  padding-right: 25px;
+  /* background-color: lightgrey; */
+}
+.notificationIcon{
+  width: 20px;
+  height: 22px;
+  background-image: url('../images/icons-svg/shape.svg');
+  color: black;
+  position: relative;
+
+}
+.notification{
+  padding: 25px 10px 25px 15px;
+  border-left: 1px solid #ababab;
+}
+.notificationPending{
+  background-color: #ed3b3a;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  left: 13px;
+  top: 12px;
+  transition: 0.3s ease;
+  /*display: none;*/ /*property changes according to state*/
+}
+
+/* .tabsRow {
+  display: flex;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+  flex-wrap: wrap;
+  padding: 0;
+} */
+.dishCategories{
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.catTab{
+  flex-basis: 100px;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow:  0px 4px 10px 0px rgba(201,201,201,1);
+  padding-bottom: 10px;
+  margin: 0 20px 20px 0;
+
+  /* padding: 5px; */
+  /* position: relative; */
+}
+.catTab:hover{
+  border: 1px solid #ea4c4b;
+}
+.catTab:hover .catIcon{
+  fill: #ea4c4b;
+}
+.catTab:hover .catName{
+  color: #ea4c4b;
+}
+.catName{
+  text-decoration: none;
+  font-family: 'Lato-Regular', sans-serif;
+  color: #a7a7a7;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 0;
+  padding-bottom: 20px ;
+  /* text-align: center; */
+}
+
+.catIcon{
+  fill: #a7a7a7;
+  margin: 7px 0 5px 10px;
+}
+
+.mainScreen{
+  width: 100%;
+  height: 75vh;/*need changing on mediaquaries*/
+  background-color: lightblue;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.dishesGallery{
+  align-items: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 45%;
+  float: left;
+  /* box-sizing: border-box; */
+  height: 100%;
+  /* padding-left: 15px; */
+}
+.dishesGalleryItemWrap{
+  background-color: white;
+  cursor: pointer;
+  border: 3px solid transparent;
+  height: 200px;
+  width: 160px;
+  margin-bottom: 25px;
+  transition: .5s ease;
+}
+.dishesGalleryItemWrap:hover{
+  border: 3px solid #ea4c4b;
+}
+.dishesGalleryItemWrap a{
+  text-decoration: none;
+}
+.roundCorners{
+  border-radius: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow:  0px 4px 10px 0px rgba(201,201,201,1);
+}
+.dishPrew{
+  width: 100%;
+  height: 120px;
+  background-image: url('../images/kruvit.png'); /*change property due to id*/
+  background-repeat: no-repeat;
+  background-size: 160px 110px;
+}
+
+.dishTitleWrap{
+  /*margin: 0 auto;*/
+}
+.dishTitle{
+  font-family: 'Lato-Bold', sans-serif;
+  color: #615f5f;
+  font-size: 13px;
+  font-weight: 550;
+  letter-spacing: 0.3px;
+  text-align: center;
+  padding-top: 5px;
+}
+/****************scrollbar*******************/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ea4c4b;
+    border-radius: 10px;
+    height: 10px;
+}
+/************************Dish in details**************/
+
+.dishDetails{
+  width: 50%;
+  background-color: lightyellow;
+  height: 100%;
+  float: right;
+
+}
+.dishPhotos{
+  width: 100%;
+  height: 65%;
+  background-color: lightpink;
+  position: relative;
+}
+.mainPhoto{
+  width: 100%;
+  height: 70%;
+  background-image: url('../images/prevLarge.png'); /*change property due to id*/
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.topLeftCornerTag{
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width: 110px;/*change on mediaquaries*/
+  /* height: 110px; */ */
+  box-sizing: border-box;
+  border: 55px solid transparent;
+  border-left: 55px solid #ea4c4b;
+  border-top: 55px solid #ea4c4b;
+}
+.topLeftCornerIcon{
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  transform-origin: center center;
+  transform: rotate(3deg);
+}
+.plateMiniatures{
+  width: 100%;
+  height: 25%;
+  background-color: lightgrey;
+  cursor: pointer;
+  }
+
+
+.platePhoto{
+  flex-basis: 30%;
+  height: 80%;
+  background-image: url('../images/kruvit.png'); /*change property due to id*/
+  background-repeat: no-repeat;
+  margin: auto;
+  background-size: 100%;
+  }
+  /***********dishDescr**********/
+  .dishDescr{
+    padding: 0 15px 0 15px;
+    margin: 0;
+    background-color: lightgreen;
+  }
+  .dishDescr h1{
+    padding: 0;
+  }
+
+.dishRate{
+  padding: 10px 0;
+  width: 130px;
+}
+.dishRateIcon{
+  fill: #a7a7a7;
+  margin: auto;
+}
+.dishRateIconActive{
+  fill: #ea4c4b;
+}
+.shortDescr{
+  padding: 0 5px 10px 0;
+  margin: 0;
+  line-height: 17px;
+  word-spacing: 3px;
+  border-bottom: 1px solid #a7a7a7;
+}
+.dishNutrition{
+  width: 100%;
+  justify-content: flex-start;
+  padding: 10px 0 20px 0;
+  background-color: lightpink;
+}
+.dishNutritionItem{
+  flex-basis: 25px;
+  margin-right: 20px;
+}
+/*change font-size on mediaquaries*/
+.nutrient{
+  color: #ea4c4b;
+  font-weight: 550;
+  margin-bottom: 3px;
+}
+.amount{
+  padding: 0;
+  margin: 0;
+}
+.tags{
+  float: left;
+}
+.dishTag{
+  padding: 0 0 5px 0;
+}
+.dishTag a{
+  text-decoration: none;
+}
+.icon{
+  fill: #ea4c4b;
+}
+.submitButton{
+  background-color: #f38180;
+  border: none;
+  border-radius: 25px;
+  float: right;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  width: 125px;
+  color: #ffffff;
+  font-size: 16px;
+}
+.submitButton:hover{
+  background-color: #ea4c4b;
+
+}
