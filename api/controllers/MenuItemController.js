@@ -6,6 +6,9 @@
  */
 
 module.exports = {
-	
+	upload : async(req, res) => {
+		console.log(req);
+		// const response = await req.file('dishImage').upload();
+	}
 };
 

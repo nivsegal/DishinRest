@@ -16,6 +16,8 @@ module.exports = {
 
 		currency: { type: 'string' },
 
+		restDishes: { model: 'restaurant' },
+
 		tags: {
 			collection: 'tag',
 			via: 'menuItem'

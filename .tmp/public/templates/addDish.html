@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Add Dish</title>
+	  <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../styles/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/addDishTemplate.css">
+    </head>
+
+    <body>
+
+<!----------------------------------header---------------------------->
+<div class="pageWrap">
+				<header>
+					 <div class="pageHeader">
+
+              <div class="arrowLeft">
+                <a href='#back'></a>
+              </div>
+
+            <h2 class="basicTitle">Add dish</h2>
+            <div class="menuAuthor">
+              <div class="authorPhoto">
+              </div>
+              <span class="authorName">Hatulia Taim</span>
+              <div class="notification">
+                <div class="notificationIcon">
+                <span class="notificationPending"></span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </header>
+
+    <div id="dishinLeftStrip" className="navigationPane">
+  			<span id="dishinLogo"></span>
+  			<div id="appNavigation">
+  				<div id="dashboard" className={active === 'dashboard' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon dashboard"></span>
+  					<span className="navTitle">Dash</span>
+  					<span className="indicator"></span>
+  				</div>
+  				<div id="menus" className={active === 'menus' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon menus"></span>
+  					<span className="navTitle">Men</span>
+  					<span className="indicator"></span>
+  				</div>
+  				<div id="categories" className={active === 'categories' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon categories"></span>
+  					<span className="navTitle">Cat</span>
+  					<span className="indicator"></span>
+  				</div>
+  				<div id="dishes" className={active === 'dishes' ? 'active' : ''} onClick={this._setActive}>
+  					<span className="icon dishes"></span>
+  					<span className="navTitle">Dish</span>
+  					<span className="indicator"></span>
+  				</div>
+  			</div>
+  		</div>
+
+    </aside>
+
+
+<!----------------------------------Dishes categories buttons---------------------------->
+ <div class="dishCategories basicFlexLayout">
+	 <div class="catTab" >
+ 		<svg class="catIcon" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+			<path d="M10.312 11.497h-2.24V4.563l1.12-1.12 1.12 1.12v6.934zM7.544 4.029H1.879l.746-.747h5.666l-.747.747zM1.35 11.497h5.974V4.776H1.351v6.72zM2.844 1.423c0-.21.168-.381.374-.381h5.227c.206 0 .374.172.374.38v1.113H2.844V1.423zm6.721 1.336V1.423c0-.62-.501-1.128-1.12-1.128H3.218c-.619 0-1.12.508-1.12 1.128v1.336L.712 4.145a.37.37 0 0 0-.11.265v7.468c0 .097.04.19.11.257.07.071.166.109.264.109h9.709a.369.369 0 0 0 .264-.109.36.36 0 0 0 .109-.257V4.41a.37.37 0 0 0-.11-.265L9.566 2.759z"/>
+        <path d="M3.675 8.256c.131-.265.412-.594.663-.87.134.15.275.306.4.47.108.138.202.28.263.4.062.12.085.216.084.261-.001.411-.336.743-.747.747a.752.752 0 0 1-.747-.747.63.63 0 0 1 .084-.261zm.663 1.755A1.499 1.499 0 0 0 5.83 8.517a1.349 1.349 0 0 0-.164-.6c-.278-.539-.791-1.039-1.053-1.33a.372.372 0 0 0-.552 0c-.173.19-.463.485-.715.81a3.344 3.344 0 0 0-.338.52 1.349 1.349 0 0 0-.165.6c.001.822.67 1.49 1.494 1.494z"/>
+ 		</svg>
+     <a href="#lactosefree" class="catName">Lactose Free</a>
+   </div>
+
+	 <div class="catTab" >
+ 		<svg class="catIcon" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+     <path fill-rule="evenodd" d="M1.745 12.547c.468-1.16 1.534-2.982 2.657-4.672.153-.23.307-.458.461-.682l1.092 1.092a.413.413 0 0 0 .583-.584L5.344 6.507c.807-1.132 1.57-2.098 2.07-2.596a2.464 2.464 0 0 1 1.748-.723 2.465 2.465 0 0 1 2.473 2.473c0 .635-.241 1.266-.723 1.749L9.454 5.952a.412.412 0 1 0-.583.583l1.427 1.428c-.815.689-2.05 1.595-3.35 2.458-.475.315-.959.624-1.437.919l-.722-.723a.412.412 0 1 0-.583.583l.578.578c-.953.561-1.84 1.031-2.508 1.3l-.153.032a.41.41 0 0 1-.286-.124.408.408 0 0 1-.124-.286l.032-.153zm.38 1.387c.153 0 .31-.03.462-.091 1.267-.515 3.096-1.593 4.817-2.736 1.721-1.145 3.31-2.335 4.09-3.114a3.29 3.29 0 0 0 .965-2.332c0-.563-.146-1.217-.432-1.629.65a.412.412 0 0 0 0-.824h-1.479l1.337-1.338a.413.413 0 0 0-.583-.583l-1.337 1.338V1.146a.412.412 0 0 0-.824 0v1.65c-.413-.286-1.067-.432-1.629-.432a3.29 3.29 0 0 0-2.332.964c-.779.781-1.97 2.37-3.115 4.09C2.573 9.14 1.495 10.97.98 12.238c-.062.152-.091.31-.091.463.006.68.555 1.228 1.235 1.234z"/>
+ 		</svg>
+     <a href="#vegetarian" class="catName">Vegetarian</a>
+   </div>
+
+	<div class="catTab" >
+		<svg class="catIcon" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+    <path fill-rule="evenodd" d="M1.745 12.547c.468-1.16 1.534-2.982 2.657-4.672.153-.23.307-.458.461-.682l1.092 1.092a.413.413 0 0 0 .583-.584L5.344 6.507c.807-1.132 1.57-2.098 2.07-2.596a2.464 2.464 0 0 1 1.748-.723 2.465 2.465 0 0 1 2.473 2.473c0 .635-.241 1.266-.723 1.749L9.454 5.952a.412.412 0 1 0-.583.583l1.427 1.428c-.815.689-2.05 1.595-3.35 2.458-.475.315-.959.624-1.437.919l-.722-.723a.412.412 0 1 0-.583.583l.578.578c-.953.561-1.84 1.031-2.508 1.3l-.153.032a.41.41 0 0 1-.286-.124.408.408 0 0 1-.124-.286l.032-.153zm.38 1.387c.153 0 .31-.03.462-.091 1.267-.515 3.096-1.593 4.817-2.736 1.721-1.145 3.31-2.335 4.09-3.114a3.29 3.29 0 0 0 .965-2.332c0-.563-.146-1.217-.432-1.629h1.65a.412.412 0 0 0 0-.824h-1.479l1.337-1.338a.413.413 0 0 0-.583-.583l-1.337 1.338V1.146a.412.412 0 0 0-.824 0v1.65c-.413-.286-1.067-.432-1.629-.432a3.29 3.29 0 0 0-2.332.964c-.779.781-1.97 2.37-3.115 4.09C2.573 9.14 1.495 10.97.98 12.238c-.062.152-.091.31-.091.463.006.68.555 1.228 1.235 1.234z"/>
+		</svg>
+    <a href="#glutenfree" class="catName">Gluten Free</a>
+  </div>
+	<div class="catTab" >
+		<svg class="catIcon" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+    <path fill-rule="evenodd" d="M9.841 12.226a4.862 4.862 0 0 1-1.385.722c.021-.033.045-.061.066-.09.58-.897.904-2.167.906-3.792a.47.47 0 0 0-.472-.472.47.47 0 0 0-.473.472c.002 1.502-.308 2.593-.753 3.278-.333.5-.663.784-1.136.902V10.01a.47.47 0 0 0-.472-.472.47.47 0 0 0-.472.472v3.24c0-.005-.055-.01-.084-.015-.389-.099-.865-.548-1.218-1.294-.355-.746-.587-1.756-.587-2.885v-.014a.47.47 0 0 0-.47-.468c-.261 0-.38.01-.381.482h-.094c0 1.256.254 2.394.68 3.291.107.222.226.435.357.629a4.682 4.682 0 0 1-1.79-1.157c-.706-.742-1.136-1.7-1.136-2.763v-.014c0-2.017 1.164-3.755 2.848-4.61C4.87 3.882 5.65 2.8 5.65 1.526V1.51a.47.47 0 0 1 .472-.473.47.47 0 0 1 .472.473v.014c0 1.275.779 2.356 1.874 2.909a5.19 5.19 0 0 1 2.849 4.632c-.006 1.436-.56 2.447-1.476 3.16zm-.946-8.633c-.824-.42-1.356-1.19-1.356-2.068V1.51a1.416 1.416 0 1 0-2.834 0v.014c0 .878-.533 1.648-1.357 2.068C1.36 4.6-.017 6.658-.017 9.038v.019c0 1.322.54 2.517 1.396 3.414a5.667 5.667 0 0 0 3.313 1.686c.12.019.236.024.354.038l-.202.203c-.185.184-.185.548 0 .732.184.184.485.066.67.066h-.002l.61-.675.61.576c.185.184.484.17.668-.014a.48.48 0 0 0 0-.676l-.204-.212c1.224-.142 2.34-.543 3.221-1.218 1.136-.87 1.85-2.22 1.844-3.91a6.129 6.129 0 0 0-3.366-5.474z"/>
+		</svg>
+    <a href="#vegan" class="catName">Vegan</a>
+  </div>
+
+</div>
+<!----------------------------------Dish details---------------------------->
+<div class="mainScreen">
+<section class="dishesGallery basicFlexLayout">
+
+  <div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+
+  </div>
+
+
+
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+	<div class="dishesGalleryItemWrap roundCorners">
+		<a href="#shepPie" id="#">
+    <div class="dishPrew">
+			</div>
+    <div class="dishTitleWrap">
+      <p class="dishTitle">Shepard's Pie</p>
+    </div>
+		</a>
+  </div>
+
+</section>
+<section class="dishDetails roundCorners">
+	<div class="dishPhotos">
+		<div class="mainPhotoWrap">
+<img class="mainPhoto" src="../images/pexel.jpeg" alt='Dish Title'>
+		</div>
+		<div class="topLeftCornerTag"></div>
+		<svg class="topLeftCornerIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31" height="32" viewBox="0 0 31 32">
+    <defs>
+        <path id="a" d="M20.484 3.505h4.048a3.505 3.505 0 0 1 3.504 3.504v12.85a3.505 3.505 0 0 1-3.504 3.504H3.505A3.505 3.505 0 0 1 0 19.86V7.009a3.505 3.505 0 0 1 3.505-3.504h4.047L9.542.52c.216-.325.581-.52.972-.52h7.009c.39 0 .755.195.972.52l1.99 2.985zM11.14 2.336l-1.99 2.985c-.216.325-.581.52-.972.52H3.505c-.646 0-1.169.523-1.169 1.168v12.85c0 .645.523 1.168 1.169 1.168h21.027c.645 0 1.168-.523 1.168-1.168V7.009c0-.645-.523-1.168-1.168-1.168h-4.673c-.39 0-.755-.195-.972-.52l-1.99-2.985H11.14zm2.88 16.355a5.84 5.84 0 1 1 0-11.682 5.84 5.84 0 0 1 0 11.682zm0-2.337a3.505 3.505 0 1 0 0-7.009 3.505 3.505 0 0 0 0 7.01z"/>
+    </defs>
+    <use fill="#FFF" fill-rule="nonzero" opacity=".562" transform="rotate(-48 17.468 12.796)" xlink:href="#a"/>
+		</svg>
+		<div class="plateMiniatures basicFlexLayout">
+			<div class="platePhoto" id="platePhoto2">
+			<img class="platePhotoMini" alt="miniature" src="../images/kruvit.png">
+		</div>
+		<div class="platePhoto" id="platePhoto2">
+		<img class="platePhotoMini" alt="miniature" src="../images/kruvit.png">
+	</div>
+	<div class="platePhoto" id="platePhoto2">
+	<img class="platePhotoMini" alt="miniature" src="../images/kruvit.png">
+</div>
+
+		</div>
+
+	</div>
+	<article class="dishDescr">
+		<h1 class="basicTitle">Sweet potato salad</h1>
+		<!--icons won't be displayed in a final design?,  <div class="dishRate basicFlexLayout">
+			<svg class="dishRateIcon dishRateIconActive" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="11" viewBox="0 0 21 11">
+		    <defs>
+		        <path id="a" d="M0 0h20.141v10.6H0z"/>
+		    </defs>
+		    <g fill-rule="evenodd" transform="translate(.073 .176)">
+		    <path fill="#FFF" d="M2.747 9.23c.428-3.804 3.691-6.688 7.477-6.649 3.718.04 6.885 2.889 7.318 6.623l-14.795.027m16.715.01h-.377c-.525-4.3-4.08-7.613-8.348-7.878V.575A.575.575 0 0 0 10.162 0h-.039a.576.576 0 0 0-.575.575v.793c-4.234.306-7.74 3.606-8.26 7.873H.679a.68.68 0 0 0 0 1.36h18.783a.68.68 0 0 0 0-1.36" mask="url(#b)"/>
+		    </g>
+			</svg>
+			<svg class="dishRateIcon dishRateIconActive" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="11" viewBox="0 0 21 11">
+		    <defs>
+		        <path id="a" d="M0 0h20.141v10.6H0z"/>
+		    </defs>
+		    <g fill-rule="evenodd" transform="translate(.073 .176)">
+		    <path fill="#FFF" d="M2.747 9.23c.428-3.804 3.691-6.688 7.477-6.649 3.718.04 6.885 2.889 7.318 6.623l-14.795.027m16.715.01h-.377c-.525-4.3-4.08-7.613-8.348-7.878V.575A.575.575 0 0 0 10.162 0h-.039a.576.576 0 0 0-.575.575v.793c-4.234.306-7.74 3.606-8.26 7.873H.679a.68.68 0 0 0 0 1.36h18.783a.68.68 0 0 0 0-1.36" mask="url(#b)"/>
+		    </g>
+			</svg>
+			<svg class="dishRateIcon dishRateIconActive" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="11" viewBox="0 0 21 11">
+		    <defs>
+
+			     <path id="a" d="M0 0h20.141v10.6H0z"/>
+		    </defs>
+		    <g fill-rule="evenodd" transform="translate(.073 .176)">
+		    <path fill="#FFF" d="M2.747 9.23c.428-3.804 3.691-6.688 7.477-6.649 3.718.04 6.885 2.889 7.318 6.623l-14.795.027m16.715.01h-.377c-.525-4.3-4.08-7.613-8.348-7.878V.575A.575.575 0 0 0 10.162 0h-.039a.576.576 0 0 0-.575.575v.793c-4.234.306-7.74 3.606-8.26 7.873H.679a.68.68 0 0 0 0 1.36h18.783a.68.68 0 0 0 0-1.36" mask="url(#b)"/>
+		    </g>
+			</svg>
+			<svg class="dishRateIcon dishRateIconActive" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="11" viewBox="0 0 21 11">
+		    <defs>
+		        <path id="a" d="M0 0h20.141v10.6H0z"/>
+		    </defs>
+		    <g fill-rule="evenodd" transform="translate(.073 .176)">
+		    <path fill="#FFF" d="M2.747 9.23c.428-3.804 3.691-6.688 7.477-6.649 3.718.04 6.885 2.889 7.318 6.623l-14.795.027m16.715.01h-.377c-.525-4.3-4.08-7.613-8.348-7.878V.575A.575.575 0 0 0 10.162 0h-.039a.576.576 0 0 0-.575.575v.793c-4.234.306-7.74 3.606-8.26 7.873H.679a.68.68 0 0 0 0 1.36h18.783a.68.68 0 0 0 0-1.36" mask="url(#b)"/>
+		    </g>
+			</svg>
+			<svg class="dishRateIconActive" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="11" viewBox="0 0 21 11">
+		    <defs>
+		        <path id="a" d="M0 0h20.141v10.6H0z"/>
+		    </defs>
+		    <g fill-rule="evenodd" transform="translate(.073 .176)">
+		    <path fill="#FFF" d="M2.747 9.23c.428-3.804 3.691-6.688 7.477-6.649 3.718.04 6.885 2.889 7.318 6.623l-14.795.027m16.715.01h-.377c-.525-4.3-4.08-7.613-8.348-7.878V.575A.575.575 0 0 0 10.162 0h-.039a.576.576 0 0 0-.575.575v.793c-4.234.306-7.74 3.606-8.26 7.873H.679a.68.68 0 0 0 0 1.36h18.783a.68.68 0 0 0 0-1.36" mask="url(#b)"/>
+		    </g>
+			</svg>
+		</div> -->
+	<p class="shortDescr basicText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+	<div class="basicFlexLayout dishNutrition">
+		<div class="dishNutritionItem">
+			<p class="nutrient basicText">kCal</p>
+			<p class="amount basicText">235</p>
+		</div>
+		<div class="dishNutritionItem">
+			<p class="nutrient basicText">Sugars</p>
+			<p class="amount basicText">22g</p>
+		</div>
+		<div class="dishNutritionItem">
+			<p class="nutrient basicText">Protein</p>
+			<p class="amount basicText">35g</p>
+		</div>
+		<div class="dishNutritionItem">
+			<p class="nutrient basicText">Carbs</p>
+			<p class="amount basicText">65g</p>
+		</div>
+		<div class="dishNutritionItem">
+			<p class="nutrient basicText">Sugars</p>
+			<p class="amount basicText">22g</p>
+		</div>
+		<div class="dishNutritionItem">
+			<p class="nutrient basicText">Protein</p>
+			<p class="amount basicText">35g</p>
+		</div>
+		<div class="dishNutritionItem">
+			<p class="nutrient basicText">Carbs</p>
+			<p class="amount basicText">65g</p>
+		</div>
+	</div>
+
+
+<div class="tags">
+<div class="dishTag" >
+ <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+	<path fill-rule="evenodd" d="M1.745 12.547c.468-1.16 1.534-2.982 2.657-4.672.153-.23.307-.458.461-.682l1.092 1.092a.413.413 0 0 0 .583-.584L5.344 6.507c.807-1.132 1.57-2.098 2.07-2.596a2.464 2.464 0 0 1 1.748-.723 2.465 2.465 0 0 1 2.473 2.473c0 .635-.241 1.266-.723 1.749L9.454 5.952a.412.412 0 1 0-.583.583l1.427 1.428c-.815.689-2.05 1.595-3.35 2.458-.475.315-.959.624-1.437.919l-.722-.723a.412.412 0 1 0-.583.583l.578.578c-.953.561-1.84 1.031-2.508 1.3l-.153.032a.41.41 0 0 1-.286-.124.408.408 0 0 1-.124-.286l.032-.153zm.38 1.387c.153 0 .31-.03.462-.091 1.267-.515 3.096-1.593 4.817-2.736 1.721-1.145 3.31-2.335 4.09-3.114a3.29 3.29 0 0 0 .965-2.332c0-.563-.146-1.217-.432-1.629.65a.412.412 0 0 0 0-.824h-1.479l1.337-1.338a.413.413 0 0 0-.583-.583l-1.337 1.338V1.146a.412.412 0 0 0-.824 0v1.65c-.413-.286-1.067-.432-1.629-.432a3.29 3.29 0 0 0-2.332.964c-.779.781-1.97 2.37-3.115 4.09C2.573 9.14 1.495 10.97.98 12.238c-.062.152-.091.31-.091.463.006.68.555 1.228 1.235 1.234z"/>
+ </svg>
+	<a href="#vegetarian" class="basicText">Vegetarian</a>
+</div>
+
+<div class="dishTag" >
+ <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14">
+ <path fill-rule="evenodd" d="M1.745 12.547c.468-1.16 1.534-2.982 2.657-4.672.153-.23.307-.458.461-.682l1.092 1.092a.413.413 0 0 0 .583-.584L5.344 6.507c.807-1.132 1.57-2.098 2.07-2.596a2.464 2.464 0 0 1 1.748-.723 2.465 2.465 0 0 1 2.473 2.473c0 .635-.241 1.266-.723 1.749L9.454 5.952a.412.412 0 1 0-.583.583l1.427 1.428c-.815.689-2.05 1.595-3.35 2.458-.475.315-.959.624-1.437.919l-.722-.723a.412.412 0 1 0-.583.583l.578.578c-.953.561-1.84 1.031-2.508 1.3l-.153.032a.41.41 0 0 1-.286-.124.408.408 0 0 1-.124-.286l.032-.153zm.38 1.387c.153 0 .31-.03.462-.091 1.267-.515 3.096-1.593 4.817-2.736 1.721-1.145 3.31-2.335 4.09-3.114a3.29 3.29 0 0 0 .965-2.332c0-.563-.146-1.217-.432-1.629h1.65a.412.412 0 0 0 0-.824h-1.479l1.337-1.338a.413.413 0 0 0-.583-.583l-1.337 1.338V1.146a.412.412 0 0 0-.824 0v1.65c-.413-.286-1.067-.432-1.629-.432a3.29 3.29 0 0 0-2.332.964c-.779.781-1.97 2.37-3.115 4.09C2.573 9.14 1.495 10.97.98 12.238c-.062.152-.091.31-.091.463.006.68.555 1.228 1.235 1.234z"/>
+ </svg>
+ <a href="#glutenfree" class="basicText">Gluten Free</a>
+</div>
+</div>
+
+	</article>
+	<button class="submitButton basicText">Add</button>
+</section>
+
+</div>
+
+
+</div>
+    </body>

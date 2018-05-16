@@ -15,57 +15,61 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 	}
 
 	@observable hours = { start: moment().hour(12).minute(0), end: moment().hour(0).minute(0) };
-	@observable title = '';
+	@observable menuTitle = '';
 	@observable titleErrMsg = [];
 	@observable menu = null;
+	@observable menuTitleEditable = false;
 
 	_normalizeHours = () => {
 		return { start: moment.utc(this.start), end: moment.utc(this.end) }
 	}
 
 	componentWillReceiveProps(newProps) {
-		const { menuId, restaurant } = newProps;
-		if(menuId === null) {
+		const { menuId, restaurant, menus } = newProps;
+		if (menuId === null) {
 			this.title = '';
 			this.hours = { start: moment().hour(12).minute(0), end: moment().hour(0).minute(0) };
 		} else {
-			restaurant.menus.map( menu => {
-				if(menu.id === menuId) {
+			menus.map(menu => {
+				if (menu.id === menuId) {
 					this.menu = menu;
-					this.title = menu.title;
-					this.hours = { start: moment(menu.hours.start), end: moment(menu.hours.end) };
+					this.menuTitle = menu.title;
+					// this.hours = { start: moment(menu.hours.start), end: moment(menu.hours.end) };
 				}
 			});
 		}
 	}
 
 	componentWillMount() {
-		const menuId = this.props.menuId;
-		this.props.restaurant.menus.map( menu => {
-			if(menu.id === menuId) {
-				this.menu = menu;
-				this.title = menu.title;
-				this.hours = { start: moment(menu.hours.start), end: moment(menu.hours.end) };
-			}
-		});
+		const { menuId, menus } = this.props;
+		if (menuId !== null) {
+			menus.map(menu => {
+				if (menu.id === menuId) {
+					this.menu = menu;
+					this.menuTitle = menu.title;
+					// this.hours = { start: moment(menu.hours.start), end: moment(menu.hours.end) }; 
+				}
+			});
+		}
 	}
 
 	_handleSubmit = e => {
 		e.preventDefault();
-		const { title } = this;
+		const { menuTitle } = this;
 		const hours = this._normalizeHours();
 		let restaurantId = this.props.restaurant.id;
 		const restaurant = restaurantId;
 		if (this._validate()) {
-			if(this.menu === null){
-				io.socket.post('/menu/create', { title, hours, restaurant }, (menu, jwres) => {
+			if (this.menu === null) {
+				io.socket.post('/menu/create', { menuTitle, restaurant }, (menu, jwres) => {
 					this.props.submitCallback(menu);
 				});
 			} else { //update
-				io.socket.post('/menu/' + this.menu.id, { title, hours, restaurant }, (updated, res) => {
+				io.socket.post('/menu/' + this.menu.id, { menuTitle, hours, restaurant }, (updated, res) => {
 					this.props.submitCallback(updated);
 				});
 			}
+			this.menuTitleEditable = false;
 		}
 		return false;
 	}
@@ -73,8 +77,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 	_validate = () => {
 		const emptyErrMsg = 'This value cannot be empty';
 		let validated = false;
-
-		if (this.title.length === 0) {
+		this.titleErrMsg.replace([]);
+		if (this.menuTitle.length === 0) {
 			this.titleErrMsg.push(emptyErrMsg)
 		}
 
@@ -90,34 +94,37 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 	_handleTitleChange = e => {
 		this.titleErrMsg.replace([]);
-		this.title = e.currentTarget.value;
+		this.menuTitle = e.currentTarget.value;
+	}
+
+	_enableEditing = (element, e) => {
+		console.log(element);
+		this[element + 'Editable'] = true;
 	}
 
 	render() {
-		const header = this.title.length > 0 ? <h4>Update Menu</h4> : <h4>Create Menu</h4>;
+		const header = this.menuTitle.length > 0 ? <h4>Update Menu</h4> : <h4>Create Menu</h4>;
+
+		const title = this.menuTitle.length === 0 || this.menuTitleEditable === true ? <div><div className="red">{this.titleErrMsg}</div>
+			<input value={this.menuTitle} onChange={this._handleTitleChange} name="menuTitle" id="menuTitle" placeholder="Menu Title (e.g., Breakfast Menu)" /></div>
+			: <h3 name="menuTitle" onClick={(e) => this._enableEditing('menuTitle', e)}>{this.menuTitle}</h3>;
+
 		return <ReactCSSTransitionGroup
 			transitionName="example"
-			transitionEnterTimeout={3500}
-			transitionLeaveTimeout={3500}
+			transitionEnterTimeout={1500}
+			transitionLeaveTimeout={1500}
 			transitionAppear={true}
-			transitionAppearTimeout={3500}>
-			{header}
-			<form onSubmit={this._handleSubmit} id="menuForm">
-				<div className="red">{this.titleErrMsg}</div>
-				<label htmlFor="title">Title</label>
-				<input value={this.title} onChange={this._handleTitleChange} name="title" id="title" />
+			transitionAppearTimeout={1500}>
+			{/* {header} */}
+			<form onSubmit={this._handleSubmit} id="menuForm" onBlur={this._handleSubmit} >
+				{title}
 				<div className="form-group">
-					<div className="form-group"><div>Active Hours</div>
+					{/* <div className="form-group"><div>Active Hours</div>
 						<span className="inline">From</span>
 						<TimePicker value={this.hours.start} className="hours" onChange={e => { this._onTimeChange('start', e) }} format={this.format} showSecond={false} />
 						<span className="inline">To</span>
 						<TimePicker value={this.hours.end} className="hours" onChange={e => { this._onTimeChange('end', e) }} format={this.format} showSecond={false} />
-					</div>
-				</div>
-				<div className="form-group">
-					<button type="submit" className="btn btn-info btn-lg">
-						Save and Go to Categories &rarr;
-						</button>
+					</div> */}
 				</div>
 			</form>
 		</ReactCSSTransitionGroup>;

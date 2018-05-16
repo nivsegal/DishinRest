@@ -16,7 +16,7 @@ module.exports = {
 			type: 'string'
 		},
 
-		hours: { type: 'object' },
+		hours: { type: 'json', columnType:'object' },
 
 		categories: {
 			collection: 'menucategory',

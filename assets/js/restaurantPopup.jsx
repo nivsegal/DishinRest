@@ -13,6 +13,7 @@ import moment from 'moment';
 	constructor(props) {
 		super(props);
 		this.format = 'h:mm a';
+		this.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	}
 
 	@observable restName = '';
@@ -33,6 +34,7 @@ import moment from 'moment';
 
 	componentWillMount() {
 		this._getTags();
+		this._initValues();
 	}
 
 	_getTags = () => {
@@ -86,10 +88,11 @@ import moment from 'moment';
 			return false;
 		}
 		const { restName, address, description, tagsChosen } = this;
-		const tags = this.tags.filter((tag, ind) => { return this.tagsChosen[ind] === true });
+		const tagsChosenFiltered = this.tags.filter((tag, ind) => { return this.tagsChosen[ind] === true });
 		const hours = this._normalizeHours();
 		let restaurantId = -1;
 		if (this._validate()) {
+			const tags = tagsChosenFiltered.map( tag => tag.id );
 			if (this.restaurant === null) {
 				io.socket.request({
 					method: 'post',
@@ -98,9 +101,10 @@ import moment from 'moment';
 					headers: { credentials: 'include' }
 				}, (restaurant, jwres) => {
 					restaurantId = restaurant.id;
-					io.socket.request({ method: 'post', url: '/restaurant/' + restaurantId, data: { 'tags': tags }, headers: { credentials: 'include' } }, (updated, res) => {
-						this.props.submitCallback(updated);
-					})
+					// io.socket.request({ method: 'post', url: '/restaurant/' + restaurantId, data: { 'tags': tags }, headers: { credentials: 'include' } }, (updated, res) => {
+
+					// });
+					this.props.submitCallback(restaurant);
 				});
 			} else {
 				io.socket.put('/restaurant/' + this.restaurant.id, { restName, address, tags, description, hours }, (updated, res) => {

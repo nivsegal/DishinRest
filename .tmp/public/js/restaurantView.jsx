@@ -13,6 +13,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Header from './header.jsx';
 import MenuLayout from './menuLayout.jsx';
 import MenuPopup from './menuPopup.jsx';
+import DishLayout from './dishLayout.jsx';
 
 @observer class RestaurantView extends React.Component {
 
@@ -27,12 +28,12 @@ import MenuPopup from './menuPopup.jsx';
 		}
 	}
 
-	@observable data = this.props.data;
-	@observable userData = data;
-	@observable menus = null;
+	@observable data = this.props.restaurant;
+	@observable userData = this.props.user;
+	@observable menus = this.props.restaurant ? this.props.restaurant.menus : null;
 	@observable notifications = [];
-	@observable restaurant = null;
-	@observable restaurantIds = this.props.data.restaurants.map(restaurant => restaurant.id);
+	@observable restaurant = this.props.restaurant;
+	// @observable restaurantIds = this.restaurant.id;
 	@observable showForm = false;
 	@observable showMenuForm = false;
 	@observable showCategoryForm = false;
@@ -90,17 +91,21 @@ import MenuPopup from './menuPopup.jsx';
 	}
 
 	_handleMenuSubmit = menu => {
-		this.showMenuForm = false;
-		this.menuId = menu.id;
-		this.menu = menu;
-		const restaurantIndex = this.data.restaurants.findIndex(restaurant => { return restaurant.id === menu.restaurant.id; });
-		const menuIndex = this.data[restaurantIndex].menus.findIndex(existingMenu => { return existingMenu.id === menu.id; });
-		if (menuIndex === -1) { //new menu
-			this.data[restaurantIndex].menus.push(menu);
-		} else {
-			this.data[restaurantIndex].menus[menuIndex] = menu;
-		}
-		this.showCategoryForm = true;
+		// this.showMenuForm = false;
+		// this.menuId = menu.id;
+		// this.menu = menu;
+		// const restaurantIndex = this.data.restaurants.findIndex(restaurant => { return restaurant.id === menu.restaurant.id; });
+		// const menuIndex = this.data[restaurantIndex].menus.findIndex(existingMenu => { return existingMenu.id === menu.id; });
+		// if (menuIndex === -1) { //new menu
+		// 	this.data[restaurantIndex].menus.push(menu);
+		// } else {
+		// 	this.data[restaurantIndex].menus[menuIndex] = menu;
+		// }
+		// this.showCategoryForm = true;
+		const menus = this.menus.filter( currentMenu => {
+			return currentMenu.id === menu.id;
+		});
+		if(this.menus.length === 0) this.menus.push(menu);
 	}
 
 	_handleCategorySubmit = category => {
@@ -148,8 +153,8 @@ import MenuPopup from './menuPopup.jsx';
 		this.headerText = this.headerTexts[name];
 	}
 
-	_handleRestCreate = () => {
-
+	_handleRestCreate = restaurant => {
+		this.restaurant = restaurant;
 	}
 
 	_handleAddMenu = () => {
@@ -159,19 +164,20 @@ import MenuPopup from './menuPopup.jsx';
 
 	render() {
 		const restForm = this.showForm === true ? <RestaurantForm restaurant={this.restaurant} submitCallback={this._handleSubmit} /> : null;
-		const menuForm = this.showMenuForm === true ? <MenuForm menuId={this.menuId} restaurant={this.restaurant} submitCallback={this._handleMenuSubmit} /> : null;
+		// const menuForm = this.showMenuForm === true ? <MenuForm menuId={this.menuId} restaurant={this.restaurant} submitCallback={this._handleMenuSubmit} /> : null;
 		const categoryForm = this.showCategoryForm === true ? <CategoryForm menuId={this.menuId} categoryId={this.categoryId} category={this.category} submitCallback={this._handleCategorySubmit} /> : null;
 		const dishForm = this.showdishForm === true ? <DishForm categoryId={this.categoryId} dishId={this.dishId} dish={this.dish} submitCallback={this._handleDishSubmit} /> : null;
-		const header = this.data.restaurants.length > 0 ? <Header headerText={this.headerText} userData={this.userData} notifications={this.notifications} /> : null;
-		const restPopup = this.data.restaurants.length === 0 ? <RestaurantPopup submitCallback={this._handleRestCreate} /> : null;
-		const menuLayout = this.activeTab === 'menus' ? <MenuLayout menus={this.menus} noMenus={this.menus.length === 0} handleAddMenu={this._handleAddMenu} /> : null;
+		const header = this.restaurant ? <Header headerText={this.headerText} userData={this.userData} notifications={this.notifications} /> : null;
+		const restPopup = this.restaurant === null ? <RestaurantPopup submitCallback={this._handleRestCreate} /> : null;
+		const menuLayout = this.activeTab === 'menus' ? <MenuLayout menus={this.menus} noMenus={this.menus.length === 0} handleAddMenu={this._handleAddMenu} restaurant={this.restaurant} handleSubmit={this._handleMenuSubmit}/> : null;
+		const dishesLayout = this.activeTab === 'dishes' ? <DishLayout restaurant={this.restaurant} /> : null;
 		return <ReactCSSTransitionGroup
 			transitionName="example"
-			transitionEnterTimeout={3500}
-			transitionLeaveTimeout={3500}
+			transitionEnterTimeout={500}
+			transitionLeaveTimeout={500}
 			transitionAppear={true}
-			transitionAppearTimeout={3500}>
-			<AppNavigation active={this.activeTab} setActive={this._setActiveTab} />
+			transitionAppearTimeout={500}>
+			<AppNavigation restaurant={this.restaurant !== null} active={this.activeTab} setActive={this._setActiveTab} />
 			<div id="loginControl">
 				<a href="/logout">Logout</a>
 				<a href="/backoffice">BackOffice</a>
@@ -183,7 +189,7 @@ import MenuPopup from './menuPopup.jsx';
 			{menuLayout}
 			{restForm}
 			{restPopup}
-			{menuForm}
+			{dishesLayout}
 			{categoryForm}
 			{dishForm}
 		</ReactCSSTransitionGroup>;

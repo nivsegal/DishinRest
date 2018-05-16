@@ -8,7 +8,6 @@
 module.exports = {
 
 	attributes: {
-		connection: 'RateEatRest',
 		restName: { type: 'string', required: true, unique: true },
 
 		description: { type: 'string', required: true },
@@ -23,8 +22,13 @@ module.exports = {
 			via: 'restaurants'
 		},
 
+		menuItems: {
+			collection: 'menuItem',
+			via: 'restDishes'
+		},
+
 		address: { type: 'string', required: true },
-		hours: { type: 'array' },
+		hours: { type: 'json', columnType: 'array' },
 		tags: {
 			collection: 'tag',
 			via: 'restFeatures'

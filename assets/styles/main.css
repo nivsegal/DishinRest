@@ -81,8 +81,11 @@ body {
 }
 
 h3 {
-	color:#353d49;
-	padding: 40px;
+	color:#565656;
+	font-size: 28px;
+	margin: 0;
+	padding: 25px 6px;
+	letter-spacing: 1px;
 }
 
 #restForm {
@@ -173,7 +176,7 @@ button {
 
 .form-group {
 	text-align: left;
-	margin-bottom: 2rem;
+	margin-bottom: 4%;
 }
 
 .form-group.name .autocompleteRoot {
@@ -229,6 +232,7 @@ button {
 
 #container {
 	position: relative;
+	margin-left:6%;
 }
 
 #formContainer {
@@ -256,7 +260,7 @@ button {
 	background-color: rgba(220, 220, 220, 0.42);
 }
 
-#restForm button {
+#restForm button, #dishForm button {
 	color: #fff;
 	background-color: #ed3a3a;
 	font-family: Lato-Regular, Helvetica, Arial, sans-serif;
@@ -714,12 +718,12 @@ input.button:hover, button:hover {
 }
 
 #header {
-	border-bottom: 1.5px solid rgba(151, 151, 151, 0.6);
+	border-bottom: 1px solid rgba(151, 151, 151, 0.8);
 	min-height: 30px;
 	padding: 0.85% 0 0.75% 0;
-	width: 95%;
-	margin: 0 74px 0 80px;
+	width: 99%;
 	line-height: 28px;
+	text-align: center;
 }
 
 .headerText {
@@ -736,7 +740,7 @@ input.button:hover, button:hover {
 	color: #000;
 	height: 35px;
 	display: inline-block;
-	border-right: 1px solid;
+	border-right: 1px solid rgba(151,151,151, 0.8);
 	padding-right: 16px;
 	line-height: 40px;
 }
@@ -754,8 +758,20 @@ input.button:hover, button:hover {
 }
 
 #menusContainer {
-	width: 95%;
-	margin:0 auto;
+	width: 50%;
+	padding: 0px 6%;
+}
+
+#menuForm input {
+	width: 40%;
+	line-height: 30px;
+	border: none;
+	border-bottom: 1px dotted;
+	text-indent: 5px;
+}
+
+input::-webkit-input-placeholder {
+	opacity: 0.3;
 }
 
 .noElementsBtn {
@@ -819,14 +835,57 @@ input.button:hover, button:hover {
 	z-index: 3;
 	left: 35%;
 }
-
+#popupFormContainer.dishPopupContainer {
+	position: absolute;
+	width: 38%;
+	min-width: 480px;
+	border: 1px solid #979797;
+	margin: 0 auto;
+	border-radius: 20px;
+	background: #fff;
+	z-index: 3;
+	left: 28%;
+}
 .closeBtn {
 	background: url(../images/x_circle.png) 0 0 no-repeat;
 	width: 24px;
 	height:24px;
 	position: absolute;
-	right: 25px;
-	top: 25px;
+	right: 30px;
+	top: 30px;
 	cursor: pointer;
 }
 
+#popupFormContainer.menuPopupContainer h4 {
+	text-align: left;
+	width: 88%;
+	padding-bottom: 15px;
+}
+
+.plusBtn {
+	margin-top:26px;
+	cursor: pointer;
+}
+
+.plusBtn:hover {
+	opacity: 0.6;
+}
+
+text {
+	font-size: 1.3rem;
+	font-weight: 100;
+	color:#fff;
+}
+
+#dishForm {
+	width: 80%;
+	margin:0 auto;
+}
+
+textarea {
+	resize: none;
+}
+
+#dishForm button {
+	margin: 10px auto 37px 27%;
+}

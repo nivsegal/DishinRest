@@ -3,8 +3,8 @@ const passport = require('passport'),
 	FacebookStrategy = require('passport-facebook'),
 	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
 	InstagramStrategy = require('passport-instagram').Strategy,
-	TwitterStrategy = require('passport-twitter').Strategy
-bcrypt = require('bcrypt');
+	TwitterStrategy = require('passport-twitter').Strategy,
+	bcrypt = require('bcrypt');
 
 passport.serializeUser((user, done) => {
 	done(null, user.id);
@@ -18,7 +18,6 @@ passport.deserializeUser((id, done) => {
 
 const verifyHandler = (token, tokenSecret, profile, done) => {
 	process.nextTick(() => {
-		// console.log(profile)
 		User.findOne({ uid: profile.id }, (err, user) => {
 			if (user) {
 				return done(null, user);
@@ -31,6 +30,11 @@ const verifyHandler = (token, tokenSecret, profile, done) => {
 					profile.first_name = nameArr[0];
 					profile.last_name = nameArr[1];
 					profile.emails = new Array(1).fill({ value: profile.username + '@' + 'gmail.com' });
+				}
+
+				if(profile.provider === 'facebook') {
+					profile.first_name = profile.name.givenName;
+					profile.last_name = profile.name.familyName;
 				}
 
 				var data = {

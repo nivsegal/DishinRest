@@ -8,7 +8,6 @@
 module.exports = {
 
 	attributes: {
-		connection: 'RateEatRest',
 		name: { type: 'string', required: true },
 		restaurant: { type: 'boolean', required: true },
 		restFeatures: { model: 'restaurant' },

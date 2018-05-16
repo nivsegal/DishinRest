@@ -19,7 +19,7 @@ module.exports = {
       dominant: true
     },
 
-		hours: { type: 'object' },
+		hours: { type: 'json', columnType:'object' },
 	}
 };
 

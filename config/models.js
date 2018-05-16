@@ -28,6 +28,6 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   migrate: 'alter',
-  connection: 'RateEatRest'
+  connection: 'default'
 
 };

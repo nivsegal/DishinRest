@@ -36,7 +36,7 @@ import { observer } from "mobx-react";
 			buttonsPane = <ButtonsPane clickCallBack={this._handleRestaurantClick} />
 		}
 		return <div>
-			<RestaurantView data={data} />
+			<RestaurantView user={user} restaurant={restaurant} />
 		</div>;
 	}
 }

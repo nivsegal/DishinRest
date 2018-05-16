@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="176" height="209" viewBox="0 0 176 209">
+    <defs>
+        <path id="b" d="M15 .899h130.559c8.284 0 15 6.716 15 15v166.57c0 6.075-4.925 11-11 11H11c-6.075 0-11-4.925-11-11V15.899c0-8.284 6.716-15 15-15z"/>
+        <filter id="a" width="117.4%" height="114.5%" x="-8.7%" y="-5.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="4"/>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.54 0 0 0 0 0.4212 0 0 0 0 0.4608 0 0 0 0.254076087 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g opacity=".571" transform="translate(7.546 3.287)">
+            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+            <use fill="#FFF" xlink:href="#b"/>
+            <path stroke="#FF0100" stroke-width="4" d="M15 2.899c-7.18 0-13 5.82-13 13v166.57a9 9 0 0 0 9 9h138.559a9 9 0 0 0 9-9V15.899c0-7.18-5.82-13-13-13H15z"/>
+        </g>
+        <text fill="#615F5F" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" transform="translate(7.546 3.287)">
+            <tspan x="35.839" y="137.247">Shepard’s Pie</tspan>
+        </text>
+    </g>
+</svg>

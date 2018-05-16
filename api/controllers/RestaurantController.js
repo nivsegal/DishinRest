@@ -6,32 +6,40 @@
  */
 
 module.exports = {
-	create: (req, res) => {
+	create: async (req, res) => {
 		const inputs = req.allParams();
-		Restaurant.create(inputs)
-			.then(restaurant => {
-				return User.find(req.user.id)
-			.then(user => {
-				restaurant.owners.add(req.user);
-				return restaurant.save();
-			})
-			})
-			.then(updated => {
-				return res.json('success');
-			})
-			.catch(err => console.error(err));
+		const restaurant = await Restaurant.create(inputs);
+		const user = await User.findOne(req.user.id);
+		await Restaurant.addToCollection(restaurant.id, 'owners').members([req.user.id]);
+		return res.json('success');
 	},
 
-	index: (req, res) => {
+	index: async(req, res) => {
 		// console.log(req.user)
 		// Restaurant.find().populate('tags').populate('menus').populate('owners').then(restaurants => {
 		// 	return res.view('user/restaurant', { layout: 'user/layout', restaurants });
 		// });
-		User.findOne(req.user.id).populate('restaurants').then ( data => {
-				return res.view('user/restaurant', { layout: 'user/layout', data });
-		}).catch(err => {
-			console.log(err);
-		}) 
+		// User.findOne(req.user.id).populate('restaurants').then(data => { //get the user's restaurant
+		// 	if(data.restaurants.length === 0) {
+		// 		return res.view('user/restaurant', { layout: 'user/layout', user: req.user, restaurant: null });
+		// 	}
+		// 	Restaurant.findOne(data.restaurants[0].id).populate('menus').populate('tags').then(restaurant => {
+		// 		return res.view('user/restaurant', { layout: 'user/layout', user: req.user, restaurant });
+		// 	});
+		// }).catch(err => {
+		// 	console.log(err);
+		// })
+		try {
+			const user = await User.findOne(req.user.id).populate('restaurants');
+			if(user.restaurants.length === 0) {
+				return res.view('user/restaurant', { layout: 'user/layout', user: req.user, restaurant: null });
+			} else {
+				const restaurant = await Restaurant.findOne(user.restaurants[0].id).populate('menus').populate('tags').populate('menuItems');
+				return res.view('user/restaurant', { layout: 'user/layout', user: req.user, restaurant });
+			}
+		} catch (err) {
+			console.error(err);
+		}
 	}
 };
 

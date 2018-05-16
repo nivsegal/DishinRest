@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"rate_eat_rest.menucategory"},{"v":2,"unique":true,"key":{"title":1.0,"menu":1.0},"name":"title_1_menu_1","ns":"rate_eat_rest.menucategory"}]}
