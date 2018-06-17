@@ -14,9 +14,11 @@ module.exports = {
 
 		price: { type: 'float' },
 
+		calories: { type: 'number' },
+
 		currency: { type: 'string' },
 
-		restDishes: { model: 'restaurant' },
+		restaurantId: { model: 'restaurant' },
 
 		tags: {
 			collection: 'tag',

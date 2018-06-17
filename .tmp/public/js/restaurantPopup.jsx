@@ -104,6 +104,7 @@ import moment from 'moment';
 					// io.socket.request({ method: 'post', url: '/restaurant/' + restaurantId, data: { 'tags': tags }, headers: { credentials: 'include' } }, (updated, res) => {
 
 					// });
+					if(restaurant !== null) document.getElementById('container').classList.remove("noMargin");
 					this.props.submitCallback(restaurant);
 				});
 			} else {

@@ -24,7 +24,7 @@ module.exports = {
 
 		menuItems: {
 			collection: 'menuItem',
-			via: 'restDishes'
+			via: 'restaurantId'
 		},
 
 		address: { type: 'string', required: true },

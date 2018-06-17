@@ -2,4 +2,5 @@
 <script>
 	const user = <%- JSON.stringify(user) %>;
 	const restaurant = <%- JSON.stringify(restaurant) %>;
+	if(restaurant === null) document.getElementById('container').classList.add("noMargin"); 
 </script>

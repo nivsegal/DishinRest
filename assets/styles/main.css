@@ -889,3 +889,19 @@ textarea {
 #dishForm button {
 	margin: 10px auto 37px 27%;
 }
+
+#dishPreview {
+	position: absolute;
+	right: 5%;
+	top: 25%;
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.relative {
+	position: relative;
+}
+
+#container.noMargin {
+	margin:0;
+}

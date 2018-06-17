@@ -34,8 +34,8 @@ import DishPopup from './dishPopup.jsx';
 
 	_fetchDishes = () => {
 		io.socket.get(`/restaurant/${this.props.restaurant.id}`, resData => {
-			this.dishes = resData;
-			this.dishes = [{ title: 'Burger man', description: 'fefefeafffffffefoiaefoiaef', }];
+			this.dishes = resData.menuItems;
+			// this.dishes = [{ title: 'Burger man', description: 'fefefeafffffffefoiaefoiaef', }];
 			this.currentDish = this.dishes[0];
 		});
 	}
@@ -60,12 +60,12 @@ import DishPopup from './dishPopup.jsx';
 
 	render() {
 		const overlayDiv = this.showOverlay === true ? <div id="overlay"></div> : null;
-		const dishPopup  = this.showOverlay === true ? <DishPopup dish={this.chosenDish} tags={this.tags} closePopup={this._closePopup} /> : null;
+		const dishPopup  = this.showOverlay === true ? <DishPopup dish={this.chosenDish} tags={this.tags} closePopup={this._closePopup} restaurantId={this.props.restaurant.id} /> : null;
 		return <div id="dishesContainer" className="mainScreen">
 			{overlayDiv}
 			{dishPopup}
 			<TagsFilters tags={this.tags} />
-			<DishGallery />
+			<DishGallery dishes={this.dishes} />
 			<DishPreview dish={this.currentDish} showAddDishForm={this._showAddDishForm} />
 		</div>;
 	}

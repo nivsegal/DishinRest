@@ -9,7 +9,6 @@ module.exports = {
 	create: async (req, res) => {
 		const inputs = req.allParams();
 		const restaurant = await Restaurant.create(inputs);
-		const user = await User.findOne(req.user.id);
 		await Restaurant.addToCollection(restaurant.id, 'owners').members([req.user.id]);
 		return res.json('success');
 	},
